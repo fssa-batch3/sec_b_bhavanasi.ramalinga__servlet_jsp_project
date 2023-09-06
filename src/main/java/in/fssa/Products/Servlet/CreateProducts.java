@@ -23,6 +23,7 @@ public class CreateProducts extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
       Product pro = new Product();
 		
 		
@@ -42,8 +43,8 @@ public class CreateProducts extends HttpServlet {
 		ProductService productservice = new ProductService();
 		try {
 			productservice.createProduct(pro);
-//			response.sendRedirect("products_list");
-			response.sendRedirect(request.getContextPath()+"/products_list.");
+
+			response.sendRedirect(request.getContextPath()+"/products_list.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException("Invalid data");

@@ -21,7 +21,7 @@ form {
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top:50px;
+  margin-top:100px;
 }
 
 label {
@@ -108,7 +108,7 @@ nav a:hover {
 
 <jsp:include page="seller_header.jsp" />
 
-<form action="products/create" method="POST">
+ <form action="products/create" method="POST">
  <label for="name">productName</label>
         <input type="text"  name="name" required><br><br>
         

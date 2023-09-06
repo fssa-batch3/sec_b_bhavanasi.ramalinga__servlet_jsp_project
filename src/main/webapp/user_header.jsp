@@ -13,6 +13,10 @@ header {
     display:flex;
     justify-content:space-between;
     align-items:center;
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 
@@ -51,7 +55,7 @@ header {
 <body>
     <header>
         <div id="logo">
-          <img src="https://iili.io/J9zJZCX.png" alt="Logo">
+         <a href="/productpriceweb/category_list.jsp"><img src="https://iili.io/J9zJZCX.png" alt="Logo"></a>
         </div>
         <div id="menu">
             <ul>

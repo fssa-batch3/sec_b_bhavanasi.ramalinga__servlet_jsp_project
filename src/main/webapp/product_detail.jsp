@@ -8,12 +8,6 @@
 <title>Insert title here</title>
 <style>
 /* Style for the card container */
-.card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px;
-}
 
 /* Style for the image */
 .card img {
@@ -23,14 +17,16 @@
 
 
 .card h1 {
-  font-size: 24px;
+  font-size: 34px;
   margin-bottom: 10px;
 }
 
 .card p {
-  font-size: 18px;
+  font-size: 24px;
   margin-bottom: 10px;
+  color:red;
 }
+
 
 .card .description {
   flex-grow: 1; 
@@ -41,7 +37,7 @@
   align-items: center;
   padding: 80px;
   border: 1px solid #ccc; 
-  margin:80px;
+  margin:300px;
 }
 
 /* Style for the button 

@@ -23,7 +23,8 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 20px;
-  margin-top:20px;
+ 
+  margin-top:130px;
 }
 
 th, td {

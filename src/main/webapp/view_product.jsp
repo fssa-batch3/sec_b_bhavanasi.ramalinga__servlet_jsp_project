@@ -9,7 +9,7 @@
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 500px;
   margin: 20px auto; /* Add margin to the top */
   text-align: center;
   background-color: #ffffff;
@@ -46,7 +46,7 @@ p {
 }
 
 
-        /* CSS for the body */
+       
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -65,6 +65,21 @@ p {
         display:flex;
         justify-content:space-around;
         }
+        
+        button[type="submit"] {
+  background-color: #4CAF50; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-size: 16px; 
+}
+
+/* Style the button on hover */
+button[type="submit"]:hover {
+  background-color: #45a049; 
+}
 </style>
 </head>
 <body>
@@ -86,7 +101,11 @@ Product product = (Product) request.getAttribute("productDetails");
                   <h2>Description is there below:</h2>
                   <%=product.getDetails() %>
                   </div>
+                  <a href="/productpriceweb/products_list.jsp">
+                  <button type="submit">Submit</button>
+                   </a>
     </div>
+   
 <% } else { %>
     <p>Product Not Found.</p>
 <% } %>

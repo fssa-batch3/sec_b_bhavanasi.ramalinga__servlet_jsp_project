@@ -52,10 +52,16 @@ display:flex;
             display:flex;
             justify-content:space-evenly;
         }
-        section {
+        
+       section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Adjust this property for spacing between items */
+    
+}
+h2{
+margin:100px;
+
 }
 
 .product_cart {
@@ -83,7 +89,7 @@ display:flex;
 <jsp:include page="user_header.jsp" />
 
 
-<h2> Category List </h2> 
+<h2> Types of Categories </h2> 
 
 <% Set<CategoryEntity> category =(Set<CategoryEntity>) request.getAttribute("categoryList"); %>
 

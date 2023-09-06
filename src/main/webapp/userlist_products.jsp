@@ -16,18 +16,28 @@
    
    
 }
-
+button {
+  background-color:blue;
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 16px;
+  }
 .product {
     width: calc(33.33% - 20px); /* Adjust the width as needed */
-    margin: 10px;
+    margin: 20px;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px;
+    margin-top:100px;
 }
 
 .product-info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top:100px;
 }
 
 .product img {
