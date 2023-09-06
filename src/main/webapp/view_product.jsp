@@ -5,25 +5,91 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Details</title>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 20px auto; /* Add margin to the top */
+  text-align: center;
+  background-color: #ffffff;
+  padding: 100px;
+  
+  border-radius: 5px;
+}
+.card img{
+margin-right:20px;
+display:flex;
+}
+
+.card h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.card .title {
+  font-size: 18px;
+  color: #007BFF;
+}
+
+.card p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Style for when the product is not found */
+p {
+  text-align: center;
+  font-size: 18px;
+  color: red;
+  margin-top: 20px;
+}
+
+
+        /* CSS for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            margin-left:1000px;
+            display:flex;
+            justify-content:space-evenly;
+        }
+        div.image{
+        display:flex;
+        justify-content:space-around;
+        }
+</style>
 </head>
 <body>
-<%
-	Product product = (Product) request.getAttribute("productDetails");
-	System.out.println(product);
-	if (product != null) {
-	%>
-	<div class="card">
-		<h1><%=product.getName()%></h1>
-		<p class="title"><%=product.getcategoryId() %></p>
-		<p><%= product.getIsActive() %>></p>
-	</div>
-	<%
-	} else {
-	%>
-	<p>Product Not Found.</p>
-	<%
-	}
-	%>
+<jsp:include page="seller_header.jsp" />
+  <%
+Product product = (Product) request.getAttribute("productDetails");
+%>
+
+<% if (product != null) { %>
+    <div class="card">
+        
+        <div class="image">
+                    <img src="<%=product.getImage_url()%>" alt="<%=product.getName()%>">
+                </div>
+               
+                <h1><%= product.getName() %></h1>
+                  <p>Price: <%= product.getPrice() %></p>
+                  <div class="description">
+                  <h2>Description is there below:</h2>
+                  <%=product.getDetails() %>
+                  </div>
+    </div>
+<% } else { %>
+    <p>Product Not Found.</p>
+<% } %>
+
 </body>
 </html>

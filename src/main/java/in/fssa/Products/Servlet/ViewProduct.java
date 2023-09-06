@@ -29,7 +29,7 @@ import in.fssa.productprice.service.ProductService;
 	        int productId = Integer.parseInt(idParam);
 
 	        ProductService productservice = new ProductService();
-	        Product product = productservice.findById(productId);
+	        Product product = productservice.findByIdproductdetails(productId);
 
 	        if (product != null) {
 	            request.setAttribute("productDetails", product);

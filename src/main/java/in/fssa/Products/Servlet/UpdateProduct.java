@@ -19,7 +19,7 @@ import in.fssa.productprice.service.ProductService;
 /**
  * Servlet implementation class UpdateProduct
  */
-@WebServlet("/Product/Update")
+@WebServlet("/product/update")
 public class UpdateProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,12 +33,16 @@ public class UpdateProduct extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			String name = request.getParameter("name");
 			int proid = Integer.parseInt(request.getParameter("categoryid"));
+			double price = Double.parseDouble(request.getParameter("price"));
+			String image_url = request.getParameter("image_url");
+			String Details = request.getParameter("Details");
 			
 			pro.setId(id);
 			pro.setName(name);
 			pro.setCategoryId(proid);
-			
-	      
+		    pro.setPrice(price);
+			pro.setImage_url(image_url);
+	        pro.setDetails(Details);
 	      
 	    
 			 ProductService productService = new ProductService();
@@ -47,8 +51,8 @@ public class UpdateProduct extends HttpServlet {
 	        
 	     try {
 	    	 
-	    	 productService.updateProduct(id, name);
-	    	 response.sendRedirect(request.getContextPath()+"products_list");
+	    	 productService.updateProduct(id, name,price,image_url,Details);
+	    	 response.sendRedirect(request.getContextPath()+"/products_list.jsp");
 	       
 	        
 	        

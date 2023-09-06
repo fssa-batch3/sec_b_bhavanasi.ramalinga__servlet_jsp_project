@@ -32,7 +32,7 @@ public class EditProduct extends HttpServlet {
 		
 		try {
 			
-			Product productDetails =  new ProductService().findById(Integer.parseInt(id));
+			Product productDetails =  new ProductService().findByIdproductdetails(Integer.parseInt(id));
 			request.setAttribute("product", productDetails);
 					
 			RequestDispatcher rd = request.getRequestDispatcher("/update_product.jsp");
