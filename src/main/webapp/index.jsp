@@ -93,7 +93,7 @@
 }
       
     </style>
-    <title>Hello, world!</title>
+    <title>Home Page</title>
   </head>
 
 

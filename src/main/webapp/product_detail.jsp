@@ -56,7 +56,7 @@
 .card img {
   max-width: 100%; 
   height: auto; 
-  width: 500px; 
+  width: 800px; 
   height: 300px; 
 }
 
@@ -106,7 +106,7 @@ Product product = (Product) request.getAttribute("Details");
     <div class="card">
         
         <div>
-                    <img src="<%=product.getImage_url()%>" alt="<%=product.getName()%>">
+                    <img src="<%=product.getImageurl()%>" alt="<%=product.getName()%>">
                 </div>
                <div class ="data">
                 <h1><%= product.getName() %></h1>

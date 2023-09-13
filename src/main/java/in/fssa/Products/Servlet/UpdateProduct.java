@@ -8,12 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.protobuf.ServiceException;
-
-import in.fssa.productprice.exception.ValidationException;
 import in.fssa.productprice.model.Product;
-import in.fssa.productprice.model.ProductEntity;
 import in.fssa.productprice.service.ProductService;
 
 /**
@@ -34,15 +29,15 @@ public class UpdateProduct extends HttpServlet {
 			String name = request.getParameter("name");
 			int proid = Integer.parseInt(request.getParameter("categoryid"));
 			double price = Double.parseDouble(request.getParameter("price"));
-			String image_url = request.getParameter("image_url");
-			String Details = request.getParameter("Details");
+			String imageurl = request.getParameter("image_url");
+			String details = request.getParameter("Details");
 			
 			pro.setId(id);
 			pro.setName(name);
 			pro.setCategoryId(proid);
 		    pro.setPrice(price);
-			pro.setImage_url(image_url);
-	        pro.setDetails(Details);
+			pro.setImageurl(imageurl);
+	        pro.setDetails(details);
 	      
 	    
 			 ProductService productService = new ProductService();
@@ -51,7 +46,7 @@ public class UpdateProduct extends HttpServlet {
 	        
 	     try {
 	    	 
-	    	 productService.updateProduct(id, name,price,image_url,Details);
+	    	 productService.updateProduct(id, name,price,imageurl,details);
 	    	 response.sendRedirect(request.getContextPath()+"/products_list.jsp");
 	       
 	        

@@ -1,6 +1,8 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,13 +58,17 @@ public class CreateUser extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath()+"/user/login");
 		
-		} catch (ValidationException e) {
+		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
+			request.setAttribute("errorMessage", e.getMessage());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
+			
+			rd.forward(request, response);
+		}
 		}
 		
 	
 	}
 
-}
+

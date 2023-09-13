@@ -140,7 +140,7 @@ nav a:hover {
 <td><%=product.getImage_url() %></td>
 <td><%=product.getDetails() %></td>
 <td><a href="product/view?id=<%=product.getId() %>"><button  type="submit">View</button></a></td>	
-<td><a href="product/edit?id=<%=product.getId() %>"><button type="submit">Update</button></a></td>
+<td><a href="product/edit?id=<%=product.getId() %>"><button type="submit">Edit</button></a></td>
 <td><a href="product/delete?id=<%=product.getId() %>"><button type="submit">Delete</button></a></td>
 </tr>
  <% } %>

@@ -102,28 +102,26 @@ p a {
 </style>
 </head>
 <body>
+
+				
+		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+		<% if(errorMsg != null) { %>
+		
+		<script> alert("<%=errorMsg%>"); </script>
+		<% } %>
+
  <header>
         <div class="container">
             <a href="user/login">Sign In</a>
             <a href="#">Register</a>
         </div>
-    </header>
+    </header>		
+
 <section>
     <form role="form" action="create" method="POST" >
     
-    <%
-				String errorMessage = request.getParameter("error");
-				if (errorMessage != null) {
-				%>
-
-				<div class="styledbutton">
-					<%=errorMessage%>
-					<!-- this will change based on invalid field entered -->
-				</div>
-				<br /> <br />
-				<%
-				}
-				%>
+   
+		
         <div class="register">
             <h2> SIGN UP : </h2>
             <div>

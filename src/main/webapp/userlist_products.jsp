@@ -88,7 +88,7 @@ button {
     <div class="product">
         <div class="product-info">
             <div>
-                <img src="<%= ps.getImage_url() %>" alt="<%= ps.getName() %>">
+                <img src="<%= ps.getImageurl() %>" alt="<%= ps.getName() %>">
             </div>
             <div>
                 <h3><%= ps.getName() %></h3>

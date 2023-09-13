@@ -37,7 +37,7 @@ public class CreateProducts extends HttpServlet {
 		pro.setName(name);
 		pro.setCategoryId(proid);
 		pro.setPrice(price);
-		pro.setImage_url(image);
+		pro.setImageurl(image);
 		pro.setDetails(Description);
 		
 		ProductService productservice = new ProductService();
