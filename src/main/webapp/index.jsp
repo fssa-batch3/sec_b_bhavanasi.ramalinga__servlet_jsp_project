@@ -91,18 +91,232 @@
     vertical-align: middle; 
     margin-right: 5px; 
 }
+----css-----------------------------------------------------
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600,700);  
+/** /!!! core css Should not edit !!!/**/
+
+body{
+  background: -webkit-linear-gradient(45deg, #0BBDE5 0%, rgba(11, 189, 229, 0) 70%), -webkit-linear-gradient(315deg, #EC0432 10%, rgba(236, 4, 50, 0) 80%), -webkit-linear-gradient(225deg, #2305CC 10%, rgba(35, 5, 204, 0) 80%), -webkit-linear-gradient(135deg, #B4DC04 100%, rgba(180, 220, 4, 0) 70%);
+background: linear-gradient(45deg, #0BBDE5 0%, rgba(11, 189, 229, 0) 70%), linear-gradient(135deg, #EC0432 10%, rgba(236, 4, 50, 0) 80%), linear-gradient(225deg, #2305CC 10%, rgba(35, 5, 204, 0) 80%), linear-gradient(315deg, #B4DC04 100%, rgba(180, 220, 4, 0) 70%);
+  height: 100%;
+  width: 100%;
+}
+
+.csSlideOuter {
+	overflow: hidden;
+}
+.lightSlider:before, .lightSlider:after {
+	content: " ";
+	display: table;
+}
+.csSlideWrapper > .lightSlider:after {
+	clear: both;
+}
+.csSlideWrapper .csSlide {
+	-webkit-transform: translate(0px, 0px);
+	-ms-transform: translate(0px, 0px);
+	transform: translate(0px, 0px);
+	-webkit-transition: all 1s;
+	transition: all 1s;
+	-webkit-transition-duration: inherit;
+	transition-duration: inherit;
+	-webkit-transition-timing-function: inherit;
+	transition-timing-function: inherit;
+}
+.csSlideWrapper .csFade {
+	position: relative;
+}
+.csSlideWrapper .csFade > * {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	margin-right: 0;
+	width: 100%;
+}
+.csSlideWrapper.usingCss .csFade > * {
+	opacity: 0;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+	-webkit-transition-duration: inherit;
+	transition-duration: inherit;
+	-webkit-transition-property: opacity;
+	transition-property: opacity;
+	-webkit-transition-timing-function: inherit;
+	transition-timing-function: inherit;
+}
+.csSlideWrapper .csFade > *.active {
+	z-index: 10;
+}
+.csSlideWrapper.usingCss .csFade > *.active {
+	opacity: 1;
+}
+/** /!!! End of core css Should not edit !!!/**/
+
+/* Pager */
+.csSlideOuter .csPager.cSpg {
+	margin: 10px 0 0;
+	padding: 0; 
+	text-align: center;
+}
+.csSlideOuter .csPager.cSpg > li {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 5px;
+  list-style-type: none;
+}
+.csSlideOuter .csPager.cSpg > li a {
+	background-color: #222222;
+	border-radius: 30px;
+	display: inline-block;
+	height: 8px;
+	overflow: hidden;
+	text-indent: -999em;
+	width: 8px;
+	position: relative;
+	z-index: 99;
+	-webkit-transition: all 0.5s linear 0s;
+	transition: all 0.5s linear 0s;
+}
+.csSlideOuter .csPager.cSpg > li:hover a, .csSlideOuter .csPager.cSpg > li.active a {
+	background-color: #428bca;
+}
+.csSlideOuter .media {
+	opacity: 0.8;
+}
+.csSlideOuter .media.active {
+	opacity: 1;
+}
+/* End of pager */
+
+/** Gallery */
+.csSlideOuter .csPager.cSGallery {
+	list-style: none outside none;
+	padding-left: 0;
+	margin: 0;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.csSlideOuter .csPager.cSGallery li {
+	opacity: 0.7;
+	-webkit-transition: opacity 0.35s linear 0s;
+	transition: opacity 0.35s linear 0s;
+}
+.csSlideOuter .csPager.cSGallery li.active, .csSlideOuter .csPager.cSGallery li:hover {
+	opacity: 1;
+}
+.csSlideOuter .csPager.cSGallery img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+.csSlideOuter .csPager.cSGallery:before, .csSlideOuter .csPager.cSGallery:after {
+	content: " ";
+	display: table;
+}
+.csSlideOuter .csPager.cSGallery:after {
+	clear: both;
+}
+/* End of Gallery*/
+
+/* slider actions */
+.csAction > a {
+	width: 32px;
+	display: block;
+	top: 50%;
+	height: 32px;
+	background-image: url('../img/controls.png');
+	cursor: pointer;
+	position: absolute;
+	z-index: 99;
+	margin-top: -16px;
+	opacity: 0.5;
+	-webkit-transition: opacity 0.35s linear 0s;
+	transition: opacity 0.35s linear 0s;
+}
+.csAction > a:hover {
+	opacity: 1;
+}
+.csAction > .csPrev {
+left: 10px;
+font-size: 30px;
+color: #FFF;
+background: #000;
+text-align: center;
+
+}
+.csAction > .csNext {
+font-size: 30px;
+color: #FFF;
+background: #000;
+text-align: center;
+	right: 10px;
+}
+.cS-hidden {
+	height: 1px;
+	opacity: 0;
+	filter: alpha(opacity=0); 
+	overflow: hidden;
+}
+
+ul{
+  
+  list-style-type: none;
+}
+
+.center {
+max-width: 650px;
+width: 100%;
+margin: auto; 
+display: block;
+margin-top: 1rem;;
+} 
+h1 {color: #fff; font-size: 38px;
+font-family: raleway;
+text-transform: uppercase;
+font-weight: 800;
+font-size: 29px;
+text-shadow: 3px 3px rgba(0, 0, 0, 0.25);
+} 
+
+#lightSlider {
+padding: 0;
+margin: 0 0 9px 0;
+}
+.slide-show {
+  width: 300px; /* Adjust this to match your image width */
+  height: 200px; /* Adjust this to match your image height */
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-show img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%; /* Initially, move the image outside the container to the right */
+  animation: slide 4s linear infinite; /* Adjust animation duration as needed */
+}
+
+@keyframes slide {
+  0%, 100% {
+    left: 100%; /* Start and end position */
+  }
+  25%, 75% {
+    left: 0; /* Middle position (fully visible) */
+  }
+}
+
       
     </style>
     <title>Home Page</title>
   </head>
-
-
-
-
-
-
-
-
 
   <body id="body-start">
 
@@ -118,8 +332,15 @@
             </ul>
         </div>
     </header>
-<!-- content start-->
-<div class="container" id="depart">
+    
+    <div class="center">
+  <h1>Shop Elecronics </h1>
+
+  </div> 
+  
+  
+  <!-- content start-->
+ <div class="container" id="depart">
   <h3 class=" d-flex  justify-content-center  justify-content-sm-start mt-5 mb-3">Shop by Department</h3>
   <div class="row  justify-content-center">
    <div class="col-12 col-sm-4 col-lg">
@@ -231,17 +452,8 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-<!-- content part 1 about start -->
-<div class="container" id="weTogether">
+  <!-- content part 1 about start -->
+  <div class="container" id="weTogether">
       <h3 class=" d-flex  justify-content-center  justify-content-sm-start mt-5">We are in this together</h3>
       <div class="row">
          <div class="col-12 col-sm-6 col-lg-3">
@@ -377,21 +589,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- footer -->
 <!-- scroll go top start -->
 <a id="myBtn" class="gotopbtn" href="#body-start"><img src="https://cdn3.iconfinder.com/data/icons/road-sign/154/road-sign-top-arrow-yellow-attention-512.png" width="50" height="50" loading="lazy"></a>
@@ -406,22 +603,6 @@
   </div>
 </div>
 <!-- loading end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -448,6 +629,7 @@
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>

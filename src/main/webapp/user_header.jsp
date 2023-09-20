@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="in.fssa.productprice.service.UserService"%>
+<%@page import="in.fssa.productprice.model.UserEntity"%>
+<%@page import="in.fssa.productprice.model.User"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -48,27 +51,71 @@ header {
     vertical-align: middle; 
     margin-right: 5px; 
 }
-    
+div#logo {
+display:flex;
+flex-direction: row;
+  align-items: center;
+  
+ 
+}
+.logo a{
+color:white;
+}
+ .logo h3{
+ margin:0px;
+ }  
+ .name a {
+ text-decoration:none;
+ }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div id="logo">
+<header>
+
+<%
+UserEntity user = null;
+if(request.getSession().getAttribute("userId") == null){
+	user = null;
+}else{
+	int userId=(Integer) request.getSession().getAttribute("userId");
+	
+	 user = (UserEntity) new UserService().findById(userId);
+}
+
+
+if (user == null) {
+%>
+
+    <div class="sign-in">
+        <p><a href="/globalfuncityweb/login" id="loginUser"> Sign In </a> | <a href="/globalfuncityweb/register"> Create Account</a>  
+    </div>
+
+<%
+} else {
+%>
+
+<div class="logo" id="logo">
          <a href="/productpriceweb/category_list.jsp"><img src="https://iili.io/J9zJZCX.png" alt="Logo"></a>
+           <a href="user_dashboard"> <h3><%= user.getName()  %></h3> </a>
         </div>
-        <div id="menu">
+          <div id="menu">
             <ul>
                 
                 
                 <li><i class="fas fa-shopping-cart" style="font-size: 36px"></i></li>
                 <li><i class="far fa-heart" style="font-size: 36px"></i></li>
                 <li><a href="">My Orders</a></li>
-              <li><a href="user/edit"><i class="fa fa-user" style="font-size:36px"></i></a></li>
-
+         <li><a href="/productpriceweb/profile?id=<%= user.getId() %>"><i class="fa fa-user" style="font-size:36px"></i></a></li>
+   
             </ul>
         </div>
+        
+<%
+}
+%>
+
+        
     </header>
-    <!-- Rest of your page content goes here -->
 </body>
 </html>

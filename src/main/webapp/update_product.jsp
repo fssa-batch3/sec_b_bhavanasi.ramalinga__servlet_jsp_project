@@ -64,10 +64,11 @@ button[type="submit"]:hover {
 
 <jsp:include page="seller_header.jsp" />
 
+
  <h1>Product Details</h1>
 <% Product product = (Product) request.getAttribute("product"); %>
 
-<form action="update" method="post">
+ <form action="update" method="post">
 
    <input type="hidden" name="id" value="<%=product.getId() %>">
 
@@ -78,7 +79,7 @@ button[type="submit"]:hover {
     <input type="text" id="productPrice" name="price" value="<%=product.getPrice() %>" required><br><br>
     
      <label for="image_url">Image url</label>
-    <input type="text" id="image_url" name="image_url" value="<%=product.getImage_url() %>" required><br><br>
+    <input type="text" id="image_url" name="image_url" value="<%=product.getImageurl() %>" required><br><br>
 
     <label for="categoryId">Category ID</label>
     <input type="text" id="categoryId" name="categoryid" value="<%=product.getcategoryId()%>"><br><br>

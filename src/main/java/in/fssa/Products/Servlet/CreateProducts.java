@@ -1,6 +1,8 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,35 +26,49 @@ public class CreateProducts extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-      Product pro = new Product();
+    Integer userIdObject = (Integer) request.getSession().getAttribute("userId");
 		
+		int userId = userIdObject.intValue();
 		
-		String name = request.getParameter("name");
-		int proid = Integer.parseInt(request.getParameter("categoryid"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		String image = request.getParameter("image_url");
-		String Description = request.getParameter("Details");
+		System.out.println(userId);
 		
+		  String categoryParameter = request.getParameter("category");
+		   Product product = new Product();
 		
-		pro.setName(name);
-		pro.setCategoryId(proid);
-		pro.setPrice(price);
-		pro.setImageurl(image);
-		pro.setDetails(Description);
-		
-		ProductService productservice = new ProductService();
 		try {
-			productservice.createProduct(pro);
-
-			response.sendRedirect(request.getContextPath()+"/products_list.jsp");
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Invalid data");
+			
+			product.setImageurl(request.getParameter("img_url"));
+			 int categoryId = Integer.parseInt(categoryParameter);
+		
+		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
+			System.out.println("Name cannot be null or empty");
+		} else {
+			product.setName(request.getParameter("name"));
+			
 		}
 		
-	
-
+		product.setDetails(request.getParameter("Details"));
+			
+		product.setUserId(userId);
+		product.setCategoryId(categoryId);
+		product.setPrice(Double.parseDouble(request.getParameter("price")));
+		
+	     System.out.println(product.toString());
+		
+		ProductService productService = new ProductService();
+		productService.createProduct(product);
+		
+		response.sendRedirect(request.getContextPath()+"/product_list");
+		
+		} catch (ValidationException | PersistenceException e) {
+			e.printStackTrace();
+			request.setAttribute("errorMessage", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
+			
+			rd.forward(request, response);
 		}
+			
 	}
+}
 
 

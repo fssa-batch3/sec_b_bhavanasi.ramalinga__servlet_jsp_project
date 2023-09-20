@@ -114,6 +114,14 @@
             <a href="User/New">Register</a>
         </div>
     </header>
+    
+    			
+		<% String errorMsg = (String) request.getAttribute("userDetails"); %>
+		<% if(errorMsg != null) { %>
+		
+		<script> alert("<%=errorMsg%>"); </script>
+		<% } %>
+		
     <section class="container">
         <form role="form" action="login" method="POST" >
             <h2>Login</h2>

@@ -3,12 +3,19 @@ package in.fssa.Products.Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.protobuf.ServiceException;
+
+import in.fssa.productprice.exception.PersistenceException;
+import in.fssa.productprice.exception.ValidationException;
 import in.fssa.productprice.model.Product;
+import in.fssa.productprice.model.ProductEntity;
 import in.fssa.productprice.service.ProductService;
 
 /**
@@ -23,41 +30,64 @@ public class UpdateProduct extends HttpServlet {
 	 */
 	  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        
-		  Product pro = new Product();
+		  ProductEntity product = new ProductEntity();
 			
-			int id = Integer.parseInt(request.getParameter("id"));
-			String name = request.getParameter("name");
-			int proid = Integer.parseInt(request.getParameter("categoryid"));
-			double price = Double.parseDouble(request.getParameter("price"));
-			String imageurl = request.getParameter("image_url");
-			String details = request.getParameter("Details");
+			int id = 0;
 			
-			pro.setId(id);
-			pro.setName(name);
-			pro.setCategoryId(proid);
-		    pro.setPrice(price);
-			pro.setImageurl(imageurl);
-	        pro.setDetails(details);
-	      
-	    
-			 ProductService productService = new ProductService();
-			 PrintWriter out = response.getWriter();
-	        
-	        
-	     try {
-	    	 
-	    	 productService.updateProduct(id, name,price,imageurl,details);
-	    	 response.sendRedirect(request.getContextPath()+"/products_list.jsp");
-	       
-	        
-	        
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            out.println(e.getMessage());
-	            throw new RuntimeException("Update product fails");
-	        }
-	        
-	    
-	}
+			Product returnProduct = null;
+			String priceParam = request.getParameter("price");
+			double price;
+			
+			try {
+				
+				product.setImageurl(request.getParameter("image_url"));
+				 price = Double.parseDouble(priceParam);
+			
+			if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
+				System.out.println("Name cannot be null or empty");
+			} else {
+				product.setName(request.getParameter("name"));
+			}
+			
+
+			if(request.getParameter("details") == null || request.getParameter("details").isEmpty()) {
+				System.out.println("details cannot be null or empty");
+			} else {
+				product.setDetails(request.getParameter("Details"));
+				product.setPrice(price);
+			}
+			
+			
+			
+			ProductService productService = new ProductService();
+			
+			String idParams = request.getParameter("id");
+			
+			id = Integer.parseInt(idParams);
+			
+			returnProduct = ProductService.findProductDetailsByProductId(id);
+			
+			request.setAttribute("editProductPrice", product);
+			
+			productService.updateProduct(id, request.getParameter("name"),price, request.getParameter("image_url"),  request.getParameter("Details"));
+			
+			response.sendRedirect(request.getContextPath()+"/products_list");
+			
+			} catch (ValidationException e) {
+				e.printStackTrace();
+				
+				request.setAttribute("errorMessage", e.getMessage());
+				
+				request.setAttribute("editProduct", returnProduct);
+				
+				request.setAttribute("pdtId", id);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/update_product.jsp");
+				dispatcher.forward(request, response);
+			} catch (PersistenceException e) {
+				
+				e.printStackTrace();
+			}
+		}
 
 }

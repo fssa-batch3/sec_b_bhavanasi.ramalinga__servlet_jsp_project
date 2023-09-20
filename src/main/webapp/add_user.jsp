@@ -112,7 +112,7 @@ p a {
 
  <header>
         <div class="container">
-            <a href="user/login">Sign In</a>
+           <a href="/login">Login</a>
             <a href="#">Register</a>
         </div>
     </header>		
@@ -144,11 +144,20 @@ p a {
                 <input type="password" id="password" name="password" required="true" >
                 <p> (Pattern: At least 8 characters including uppercase, lowercase, number, and special characters) </p>
             </div>
-            
-            
+             <div>
+                <label> Address: </label>
+                <input type="text" id="Address" name="Address"  required="true">
+            </div>
+             <div>
+                <label> Select Role: </label>
+                <select id="role" name="role" required="true">
+                    <option value="user">User</option>
+                    <option value="seller">Seller</option>
+                </select>
+            </div>
 
             <p>
-                Already have an account? <a href="user/login"> LOG IN </a> 
+              Already have an account? <a href="user/login"> LOG IN </a> 
             </p>
 
             <button type="submit" class="submit"> SUBMIT </button>

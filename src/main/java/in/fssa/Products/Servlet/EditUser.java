@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.fssa.productprice.exception.ServiceException;
 import in.fssa.productprice.exception.ValidationException;
@@ -29,11 +30,19 @@ public class EditUser extends HttpServlet {
 
 
 		
-		String userId = request.getParameter("id");
-		
+
 		try {
-			UserEntity user = UserService.findById(Integer.parseInt(userId));
+
+			HttpSession session = request.getSession();
+			
+			Integer userId = (Integer) session.getAttribute("userId");
+			
+			UserEntity user = UserService.findById(userId);
+	   
 			request.setAttribute("editUser", user);
+			
+			request.setAttribute("userId", userId);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/profile_edit.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
@@ -44,6 +53,5 @@ public class EditUser extends HttpServlet {
 			e.printStackTrace();
 		} 
 	}
-
 
 }

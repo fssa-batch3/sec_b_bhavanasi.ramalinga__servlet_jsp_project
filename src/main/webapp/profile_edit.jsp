@@ -34,7 +34,7 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="password"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -67,26 +67,50 @@ input[disabled] {
 </style>
 </head>
 <body>
-
- <h1> Update user </h1>
-<% 
-
+   <h1> Update user </h1>
+    
+   
+        <%
 		UserEntity user = (UserEntity) request.getAttribute("editUser");
-	
-	%>
-	
-	<form action="edit?id=<%=user.getId() %>" method = "post">
 
-       <input type="hidden" name="id" value="<%=user.getId() %>">
-		<label> Name : <input type="text" name="name" required value=<%= user.getName() %>> </label>
-		<label> Email : <input type="text" name="email" disabled value=<%= user.getEmail() %>> </label>
-		<label> Phone number : <input type="number" name="phoneNumber" disabled value=<%= user.getPhoneNumber() %>> </label>
-		<label> Password : <input type="password" name="password" required value=<%=user.getPassword() %>> </label>
 		
+		%>
 		
-		<button type="submit"> Submit </button>
+				
+		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+
+
+		<% if(errorMsg != null && user!=null) { %>
 		
-	</form>
+		<script> alert("<%=errorMsg%>"); </script>
+		
+		<script>
+     document.getElementById("name").value = "<%= user != null ? user.getName() : "" %>";
+     document.getElementById("email").value = "<%= user != null ? user.getEmail() : "" %>";
+     document.getElementById("phoneNumber").value = "<%= user != null ? user.getPhoneNumber() : "" %>";
+     document.getElementById("password").value = "<%= user != null ? user.getPassword() : "" %>";
+      document.getElementById("address").value = "<%= user != null ? user.getAddress() : "" %>";	
+   </script>
+
+			<% } %>
+    <form action="update" method="post">
+    
+    <input type="hidden" name="id" value="<%=user.getId() %>">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required value="<%= user.getName() %>">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" disabled value="<%= user.getEmail() %>">
+    <label for="phoneNumber">Phone number:</label>
+    <input type="number" id="phoneNumber" name="phoneNumber" disabled value="<%= user.getPhoneNumber() %>">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required value="<%= user.getPassword() %>">
+    <label for="address">Address:</label>
+    <textarea id="address" name="Address" required><%= user != null ? user.getAddress() : "" %></textarea>
+     <button type="submit">Submit</button>
+    
+    
+</form>
+
 
 </body>
 </html>

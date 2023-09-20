@@ -42,6 +42,6 @@ public class EditProduct extends HttpServlet {
 		catch(Exception e) {
 		e.printStackTrace();
 		}
-    }
-	}
+       }
+}
 	

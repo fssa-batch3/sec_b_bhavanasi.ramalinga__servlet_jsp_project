@@ -24,19 +24,34 @@ public class UpdateUser extends HttpServlet {
 		
          UserEntity user = new UserEntity();
 		
-		try {
-		
-		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
-		} else {
-			user.setName(request.getParameter("name"));
-		}
+         try {
+        	    String nameParameter = request.getParameter("name");
+
+        	    if (nameParameter == null || nameParameter.trim().isEmpty()) {
+        	        System.out.println("Name cannot be null or empty");
+        	    } else {
+        	        String[] nameParts = nameParameter.trim().split("\\s+"); 
+        	        StringBuilder formattedName = new StringBuilder();
+
+        	        for (String part : nameParts) {
+        	            if (!part.isEmpty()) {
+        	                if (formattedName.length() > 0) {
+        	                    formattedName.append(" ");
+        	                }
+        	                formattedName.append(Character.toUpperCase(part.charAt(0))); 
+        	                formattedName.append(part.substring(1).toLowerCase()); 
+        	            }
+        	        }
+
+        	        user.setName(formattedName.toString());
+        	    }
 		
 		
 		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
 			System.out.println("Name cannot be null or empty");
 		} else {
 			user.setPassword(request.getParameter("password"));
+			user.setAddress(request.getParameter("Address"));
 		}
 		
 			
@@ -52,13 +67,14 @@ public class UpdateUser extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath()+"/category_list.jsp");
 		
+		
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		} catch (ServiceException   e) {
 			e.printStackTrace();
 		}
 		
-	}
-	}
+	  }
+	  }
 
 

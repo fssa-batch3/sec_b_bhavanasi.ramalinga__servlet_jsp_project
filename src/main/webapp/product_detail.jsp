@@ -5,33 +5,33 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Detail </title>
 <style>
 /* Style for the card container */
 
 /* Style for the image */
-.card img {
+.cards img {
   max-width: 200px; 
   margin-right: 20px; 
 }
 
 
-.card h1 {
+.cards h1 {
   font-size: 34px;
   margin-bottom: 10px;
 }
 
-.card p {
+.cards p {
   font-size: 24px;
   margin-bottom: 10px;
   color:red;
 }
 
 
-.card .description {
+.cards .description {
   flex-grow: 1; 
 }
-.card {
+.cards {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,31 +50,25 @@
 }
 
 /* Center the button vertically within the card */
-.card button {
+.cards button {
   align-self: center;
 }
-.card img {
+.cards img {
   max-width: 100%; 
   height: auto; 
-  width: 800px; 
+  width: 1500px; 
   height: 300px; 
 }
 
-  background-color: #007bff; 
-  color: #fff; 
-  border: none; 
-  padding: 10px 20px; 
-  font-size: 16px; 
-  cursor: pointer; 
-  border-radius: 5px;
-}
+ 
+
 
 
 button:hover {
   background-color: #0056b3; 
 }
 .data{
-margin-left:200px;
+margin-left:100px;
 }
 
 button {
@@ -87,7 +81,9 @@ button {
   font-size: 16px; 
   margin-top:20px;
 }
-
+.rating p{
+color:green;
+}
 /* Style the button on hover */
 .book-button:hover {
   background-color: #0056b3; /* Change the background color on hover */
@@ -103,22 +99,25 @@ Product product = (Product) request.getAttribute("Details");
 %>
 
 <% if (product != null) { %>
-    <div class="card">
+    <div class="cards">
         
         <div>
                     <img src="<%=product.getImageurl()%>" alt="<%=product.getName()%>">
                 </div>
                <div class ="data">
-                <h1><%= product.getName() %></h1>
+                <h2><%= product.getName() %></h2>
                   <p>Price: <%= product.getPrice() %></p>
+                 <div class="rating">
+                    <p>25% OFF</p>
+                <p> 1200 ratings & 564 reviews</p>
+               </div>
                   <div class="description">
                   <h2>Description is there below:</h2>
                   <%=product.getDetails() %>
                      
                   </div>
-                   <button type="button" >Book now</button> 
-                  </div>
-              
+                 <a href="/productpriceweb/BookProduct?id=<%=product.getId()%>"><button type="button">Book now</button></a>
+                </div> 
     </div>
    
 <% } else { %>
@@ -126,6 +125,9 @@ Product product = (Product) request.getAttribute("Details");
 <% } %>
 
 
+<footer>
+<jsp:include page="footer.jsp" />
+</footer>
 
 </body>
 </html>

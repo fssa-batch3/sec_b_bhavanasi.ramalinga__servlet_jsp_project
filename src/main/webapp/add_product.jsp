@@ -120,8 +120,25 @@ nav a:hover {
         <label for="Details">Details</label>
       <textarea name="Details" required></textarea><br><br>
 
-        <label for="id">CategoryId</label>
-        <input type="text" name="categoryid" required><br><br>
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+      
+      <option value="9">Computer parts</option>
+      <option value="11">Fridge</option>
+      <option value="2">Mobiles,chargers and Covers</option>
+      <option value="1">Laptops & chargers</option>
+      <option value="3">Electric Wires</option>
+      <option value="4">Camera</option>
+      <option value="5">TV</option> 	
+      <option value="7">Washing Machine</option>
+      <option value="6">Speakers</option> 		
+      <option value="8">Tube Lights and Bulbs</option> 
+      <option value="10">Earphones</option> 
+      <option value="12">Iron boxes </option>
+         
+    
+</select><br><br>
+
         
        <button type="submit">Submit</button>
   </form>

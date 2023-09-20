@@ -4,29 +4,40 @@
 <%@page import="in.fssa.productprice.model.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Products </title>
 
 <style>
 .project {
     display: flex;
+    width: 90%;
+    margin: 50px auto;
+    margin-top: 200px;
    
    
 }
 button {
-  background-color:blue;
-  color: #fff; 
-  padding: 10px 20px; 
-  border: none; 
-  border-radius: 5px; 
-  cursor: pointer;
-  font-size: 16px;
-  }
+  padding: 10px;
+  background: #002266;
+  margin: 10px;
+  display: block;
+  text-align: center;
+  color: #fff;
+  transition: all 1s linear;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  width: 200px; 
+}
+
 .product {
-    width: calc(33.33% - 20px); /* Adjust the width as needed */
+    width: calc(33.33% - 20px);
     margin: 20px;
     border: 1px solid #ccc;
     padding: 20px;
@@ -44,11 +55,12 @@ button {
     max-width: 100%;
     height: auto;
     height:300px;
+    idth: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
 }
 
-.product h3 {
-    margin: 10px 0;
-}
 
 .product p {
     color: #888;
@@ -70,6 +82,44 @@ button {
             display:flex;
             justify-content:space-evenly;
         }
+        
+        
+   .product{   
+    display: inline-block;
+    background: #FEFEFE;
+    border: 2px solid #FAFAFA;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 0px 15px;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    padding: 15px;
+    padding-bottom: 5px;
+    background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+    opacity: 1;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    }
+    
+    .product product-info div{
+    font-size: .9rem;
+    color: #444;
+    line-height: 1.5;
+    height: 60px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    }
+    .product product-info img{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+}
+.product-info a{
+margin-bottom:20px;
+}
 
 </style>
 
@@ -77,6 +127,10 @@ button {
 <body>
 
   <jsp:include page="user_header.jsp" />
+  
+  
+ 
+  <sections>
        
 <% ProductService sr = new ProductService();%>
 <% Set<Product> products = (Set<Product>) request.getAttribute("prodByCate"); %>
@@ -91,8 +145,8 @@ button {
                 <img src="<%= ps.getImageurl() %>" alt="<%= ps.getName() %>">
             </div>
             <div>
-                <h3><%= ps.getName() %></h3>
-                <p>Price: <%= ps.getPrice() %></p>
+                <h2><%= ps.getName() %></h2>
+                <h3>Price:$ <%= ps.getPrice() %></h3>
             </div>
            <a href="detail?id=<%=ps.getId()%>"><button>View Details</button></a>
 
@@ -103,14 +157,12 @@ button {
     <%	
     }
     %>
+    </div>
+    </sections>
    
 </div>
-
-
-
-
-
-
-
+<footer>
+<jsp:include page="footer.jsp" />
+</footer>
 </body>
 </html>

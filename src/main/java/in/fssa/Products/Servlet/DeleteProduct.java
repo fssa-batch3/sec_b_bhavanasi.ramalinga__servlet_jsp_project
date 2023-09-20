@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.protobuf.ServiceException;
+
+import in.fssa.productprice.exception.PersistenceException;
+import in.fssa.productprice.exception.ValidationException;
+import in.fssa.productprice.model.Product;
 import in.fssa.productprice.service.ProductService;
 
 /**
@@ -18,17 +23,25 @@ import in.fssa.productprice.service.ProductService;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    Product product = new Product();
 		
 		try {
-			ProductService ps = new ProductService();
-			int id = Integer.parseInt(request.getParameter("id"));
-			ps.deleteProduct(id);
-			response.sendRedirect(request.getContextPath() +"/products_list.jsp");
+			
+			ProductService productService = new ProductService();
+			
+			String idParams = request.getParameter("id");
+			
+			int id = Integer.parseInt(idParams);
+			
+			productService.delete(id); 
+			
+			response.sendRedirect(request.getContextPath() + "/products_list");
+			
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		} catch (PersistenceException e) {
+			e.printStackTrace();
 		}
-		catch(Exception e) {
-			 e.printStackTrace();
-		}
-		
 	}
 
 	
