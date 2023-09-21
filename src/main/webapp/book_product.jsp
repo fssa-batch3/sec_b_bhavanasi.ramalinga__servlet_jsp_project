@@ -18,12 +18,17 @@ margin-top:100px;
  .cards {
     display: flex;
     padding: 10px;
+    margin:300px;
+    border:1px solid;
   }
 
   .product {
    
     padding: 10px;
     border-right: 1px solid #ccc;
+  }
+  .description h2 , #text{
+  margin-left:70px;
   }
 
   .userdetails {
@@ -37,14 +42,19 @@ margin-top:100px;
   padding: 20px;
   background-color: #f4f4f4;
   border: 1px solid #ccc;
- 
+    width:150%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin:20px;
 }
+
 
 /* Style the form heading */
 .userdetails h3 {
   font-size: 24px;
   margin-bottom: 20px;
+}
+.description h3, p{
+margin-left:50px;
 }
 
 /* Style form labels */
@@ -92,7 +102,31 @@ margin-top:100px;
 display:flex;
 width:450px;
 flex-direction:column;
+align-items: center;
 }
+
+button[type="submit"] {
+        background-color: #007bff; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3; 
+    }
+    .name{
+    display:flex;
+    }
+    .productImage img{
+    vertical-align: middle;
+    border-style: none;
+    margin: 40px;
+    width: 80%;
+    }
   
 </style>
 
@@ -110,16 +144,22 @@ flex-direction:column;
  <% if (pdt != null) { %>
     <div class="cards">
     <div class="product">
-       
-            <div>
-                    <img src="<%=pdt.getImageurl()%>" alt="<%=pdt.getName()%>">
+      
+            <div class="productImage">
+                    <img src="<%=pdt.getImageurl()%>" name="image" alt="<%=pdt.getName()%>" height="80%", width="100px">
                 </div>
                  <div class ="data">
-                 <h2><%= pdt.getName() %></h2>
-                  <p>Price: <%= pdt.getPrice() %></p>
+                 <div class="name">
+                 <h3>Name:</h3>
+                 <h3><%= pdt.getName() %></h3>
+                 </div>
+                 <div class="name">
+                
+                  <h3>Price: <%= pdt.getPrice() %></h3>
+                  </div>
                      <div class="description">
-                  <h2>Description is there below:</h2>
-                  <%=pdt.getDetails() %>
+                  <h3>Description is there below:</h3>
+                <p><%=pdt.getDetails() %></p>
                      
                   </div>
                   
@@ -127,7 +167,7 @@ flex-direction:column;
           </div>
           </div>
           
-     <form action="buy_now" method="post">   
+     <form action="buy_now" method="post" >   
      <div class="userdetails">
     
      <h3>User Details</h3>
@@ -144,13 +184,14 @@ flex-direction:column;
     <label for="address">Address:</label>
     <textarea id="add" name="add" required><%= user.getAddress() %></textarea>
      <label for="pincode">Pincode:</label>
-    <input type="text" id="pincode" name="pincode" value="">
+    <input type="text" id="pincode" name="pincode" required="true" >
     
      <input type="hidden" name="pdtid" value="<%= pdt.getId() %>">
-   <input type="hidden" name="userId" value="<%= pdt.getUserId() %>">
+   <input type="hidden" name="sellerid" value="<%= pdt.getUserId() %>">
    <input type="hidden" name="price" value="<%= pdt.getPrice() %>">
-    <input type="hidden" name="id" value="<%= user.getId() %>">
-    
+   <input type="hidden" name="userId" value="<%= user.getId() %>">
+    <input type="hidden" name="image" value="<%=pdt.getImageurl() %>"/>
+    <input type="hidden" name="productName" value=<%=pdt.getName() %>/>
     
       <button type="submit">Order</button>
     </div>
@@ -161,6 +202,8 @@ flex-direction:column;
     <p>Product Not Found.</p>
 <% } %>
  
-
+<footer>
+<jsp:include page="footer.jsp" />
+</footer>
 </body>
 </html>

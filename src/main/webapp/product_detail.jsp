@@ -37,17 +37,10 @@
   align-items: center;
   padding: 80px;
   border: 1px solid #ccc; 
-  margin:300px;
+  margin:250px;
 }
 
-/* Style for the button 
-.card button {
-  background-color:
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
+
 
 /* Center the button vertically within the card */
 .cards button {
@@ -61,7 +54,9 @@
 }
 
  
-
+.book{
+margin-top:30px;
+}
 
 
 button:hover {
@@ -71,6 +66,7 @@ button:hover {
 margin-left:100px;
 }
 
+
 button {
   background-color: #007BFF; 
   color: #ffffff; 
@@ -79,7 +75,7 @@ button {
   border-radius: 5px; 
   cursor: pointer; 
   font-size: 16px; 
-  margin-top:20px;
+  margin-top:60px;
 }
 .rating p{
 color:green;
@@ -102,7 +98,7 @@ Product product = (Product) request.getAttribute("Details");
     <div class="cards">
         
         <div>
-                    <img src="<%=product.getImageurl()%>" alt="<%=product.getName()%>">
+                 <img src="<%=product.getImageurl()%>" alt="<%=product.getName()%>">
                 </div>
                <div class ="data">
                 <h2><%= product.getName() %></h2>
@@ -112,11 +108,13 @@ Product product = (Product) request.getAttribute("Details");
                 <p> 1200 ratings & 564 reviews</p>
                </div>
                   <div class="description">
-                  <h2>Description is there below:</h2>
+                  <h3>Description is there below:</h3>
                   <%=product.getDetails() %>
                      
                   </div>
+                  <div class="book">
                  <a href="/productpriceweb/BookProduct?id=<%=product.getId()%>"><button type="button">Book now</button></a>
+                 </div>
                 </div> 
     </div>
    

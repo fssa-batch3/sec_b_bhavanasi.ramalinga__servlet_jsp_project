@@ -70,7 +70,10 @@ margin:10px;
             border-radius: 5px;
             text-decoration: none;
         }
-
+       
+footer{
+margin-top:500px;
+}
 </style>
 </head>
 
@@ -96,8 +99,8 @@ margin:10px;
     </div>
     <% } %>
     
- <footer>
-<jsp:include page="footer.jsp"/> 
-</footer>
+ 
+
+
 </body>
 </html>

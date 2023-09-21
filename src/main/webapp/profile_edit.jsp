@@ -105,6 +105,8 @@ input[disabled] {
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required value="<%= user.getPassword() %>">
     <label for="address">Address:</label>
+     <input type="role" id="role" name="role" required disabled  value="<%= user.getRole() %>">
+    <label for="address">Address:</label>
     <textarea id="address" name="Address" required><%= user != null ? user.getAddress() : "" %></textarea>
      <button type="submit">Submit</button>
     

@@ -49,16 +49,16 @@ public class BookNow extends HttpServlet {
 				request.setAttribute("userDetails", user);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/book_product.jsp");
 				dispatcher.forward(request, response);
-			} catch (NumberFormatException e) {
+			   } catch (NumberFormatException e) {
 				e.printStackTrace();
-			} catch (ValidationException e) {
+			   } catch (ValidationException e) {
 				e.printStackTrace();
-			} catch (PersistenceException e) {
+			   } catch (PersistenceException e) {
 				e.printStackTrace();
-			} catch (Exception e) {
+			    } catch (Exception e) {
 				e.printStackTrace();
-			}
-		}
+			    }
+		     }
 
 	
 
@@ -68,27 +68,35 @@ public class BookNow extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		 String pincodeParam = request.getParameter("pincode");
+		 
 
 		try {
 
 			OrderEntity order = new OrderEntity();
 
 			HttpSession session = request.getSession();
+			
 			Integer userIdObject = (Integer) session.getAttribute("userId");
-
+		    
+			
+			int pincode = Integer.parseInt(pincodeParam);
+			
 			int userId = userIdObject.intValue();
-			String name = request.getParameter("name");
-			 String add = request.getParameter("add");
-			 
+			
+			String add = request.getParameter("add");
+			String image = request.getParameter("image");
+			String productName = request.getParameter("productName");
 			order.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
 			order.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 			order.setPrice(Double.parseDouble(request.getParameter("price")));
 		    order.setPincode(Integer.parseInt(request.getParameter("pincode")));
 			order.setUserId(userId);
-            order.setSellerId(Integer.parseInt(request.getParameter("id")));
+			order.setSellerId(Integer.parseInt(request.getParameter("sellerid")));
             order.setPdtId(Integer.parseInt(request.getParameter("pdtid")));
+            order.setImage(image);
             order.setAddress(add);
-            order.setName(name);
+            order.setName(productName);
             
    
 		    

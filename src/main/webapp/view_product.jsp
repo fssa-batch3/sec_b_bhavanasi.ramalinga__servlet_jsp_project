@@ -93,7 +93,8 @@ Product product = (Product) request.getAttribute("productDetails");
     <div class="card">
         
         <div class="image">
-                    <img src="<%=product.getImage_url()%>" alt="<%=product.getName()%>">
+              <img src="<%= product.getImageurl() %>" alt="<%= product.getName() %>">
+
                 </div>
                
                 <h1><%= product.getName() %></h1>
@@ -106,7 +107,6 @@ Product product = (Product) request.getAttribute("productDetails");
                   <button type="submit">Submit</button>
                    </a>
     </div>
-   
 <% } else { %>
     <p>Product Not Found.</p>
 <% } %>

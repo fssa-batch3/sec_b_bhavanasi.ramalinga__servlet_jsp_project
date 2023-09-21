@@ -65,7 +65,7 @@
             <div id="menu">
             <ul>
                
-                <li><a href="">Orders</a></li>
+                <li><a href="seller/order">Orders</a></li>
                  <li> <a href="add_product.jsp">Create Product</a></li>
               <li><a href="user/edit"><i class="fa fa-user" style="font-size:36px"></i></a></li>
 

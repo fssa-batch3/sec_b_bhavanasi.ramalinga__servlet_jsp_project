@@ -52,6 +52,8 @@ public class UpdateUser extends HttpServlet {
 		} else {
 			user.setPassword(request.getParameter("password"));
 			user.setAddress(request.getParameter("Address"));
+			user.setEmail(request.getParameter("email"));
+			
 		}
 		
 			
