@@ -192,6 +192,7 @@ button[type="submit"] {
    <input type="hidden" name="userId" value="<%= user.getId() %>">
     <input type="hidden" name="image" value="<%=pdt.getImageurl() %>"/>
     <input type="hidden" name="productName" value=<%=pdt.getName() %>/>
+    <input type="hidden" name="username" value=<%=user.getName() %>/>
     
       <button type="submit">Order</button>
     </div>
