@@ -37,28 +37,29 @@ public class CreateProducts extends HttpServlet {
 		
 		try {
 			
-			product.setImageurl(request.getParameter("img_url"));
+			
 			 int categoryId = Integer.parseInt(categoryParameter);
 		
 		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
 			System.out.println("Name cannot be null or empty");
 		} else {
 			product.setName(request.getParameter("name"));
+			product.setImageurl(request.getParameter("image_url"));
 			
 		}
 		
 		product.setDetails(request.getParameter("Details"));
-			
 		product.setUserId(userId);
 		product.setCategoryId(categoryId);
+		
 		product.setPrice(Double.parseDouble(request.getParameter("price")));
 		
 	     System.out.println(product.toString());
 		
 		ProductService productService = new ProductService();
-		productService.createProduct(product);
+		 productService.createProduct(product);
 		
-		response.sendRedirect(request.getContextPath()+"/product_list");
+		response.sendRedirect(request.getContextPath()+"/products_list");
 		
 		} catch (ValidationException | PersistenceException e) {
 			e.printStackTrace();

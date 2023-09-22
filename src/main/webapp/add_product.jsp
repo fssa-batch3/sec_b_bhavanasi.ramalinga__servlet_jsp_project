@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Create Product</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+ <style>
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -105,6 +108,17 @@ nav a:hover {
 </style>
 </head>
 <body>
+			
+		<%
+   String error = (String) request.getAttribute("errorMessage");
+   if (error != null && !error.isEmpty()) {
+%>
+   <script>
+      Notify.error('<%=error%>');
+   </script>
+<%
+   }
+%>
 
 <jsp:include page="seller_header.jsp" />
 
@@ -114,7 +128,7 @@ nav a:hover {
         
         <label for="price">productPrice</label>
         <input type="text"  name="price" required><br><br>
-        <label for="id">Image</label>
+        <label for="image_url">Image </label>
         <input type="text" name="image_url" required><br><br>
         
         <label for="Details">Details</label>

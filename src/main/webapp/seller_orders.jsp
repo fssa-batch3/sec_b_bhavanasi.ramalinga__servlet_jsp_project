@@ -1,3 +1,4 @@
+<%@page import="in.fssa.productprice.model.OrderStatus"%>
 <%@page import="in.fssa.productprice.model.OrderEntity"%>
 <%@page import="in.fssa.productprice.model.Order"%>
 <%@page import="java.util.Set"%>
@@ -7,77 +8,82 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> Seller Orders </title>
 </head>
 <style>
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
+/* Style the table */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-top:150px;
+    border:1px solid;
+    margin-left:50px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+th{
+text-align:center;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+th {
+    background-color: #f2f2f2;
 }
 
-.product-card {
-    display:flex;
-
-     margin:150px;
-    border-radius: 5px;
-    padding: 20px;
- 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s;
+/* Style the buttons */
+button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
+.accept-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
 }
 
-.product-image {
-    max-width: 100%;
-    height: auto;
+.reject-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
 }
 
-h2 {
-    font-size: 1.5rem;
-    margin-top: 10px;
+.accept-button:hover, .reject-button:hover {
+    opacity: 0.8;
+}
+h2{
+margin-top: 140px;
+    display: flex;
+    align-content: flex-end;
+    justify-content: center;
+}
+.deliverd-button{
+ background-color: #4CAF50;
+    color: white;
+    border: none;
 }
 
-h3 {
-    font-size: 1.2rem;
-    color: #555;
-}
-
-p {
-    margin-top: 10px;
-}
-
-/* Responsive styles for smaller screens */
-@media (max-width: 768px) {
-    .product-card {
-        width: 100%;
-        margin: 10px 0;
-    }
+footer{
+margin-top:150px;
 }
 
 </style>
 <body>
 
 <jsp:include page="seller_header.jsp" /> 
- <%
-    Set<OrderEntity> order = (Set<OrderEntity>) request.getAttribute("orderList");
-   %>
-     
-    <table>
+<%
+
+Set<OrderEntity> order = (Set<OrderEntity>) request.getAttribute("orderList");
+%>
+
+
+<table>
     <thead>
         <tr>
             <th>Product Image</th>
@@ -85,27 +91,43 @@ p {
             <th>Price</th>
             <th>Username</th>
             <th>Phone Number</th>
-            <th>Action</th>
+            <th>Address</th>
+            <th>Responce</th>
         </tr>
     </thead>
-    <tbody>
-        <% for (OrderEntity pr : order) { %>
-        <tr>
-            <td>
-                <img class="product-image" src="<%= pr.getImage() %>" alt="<%= pr.getName() %>">
-            </td>
-            <td><%= pr.getName() %></td>
-            <td>$<%= pr.getPrice() %></td>
-            <td><%= pr.() %></td>
-            <td><%= pr.getPhoneNumber() %></td>
-            <td>
-                <button class="accept-button">Accept</button>
-                <button class="reject-button">Reject</button>
-            </td>
-        </tr>
-        <% } %>
-    </tbody>
+    <% if (order.isEmpty()) { %>
+    <tr>
+        <td colspan="6"><h2>No Orders Booked by Users .</h2></td>
+    </tr>
+    <% } else { %>
+    <% for (OrderEntity pr : order) { %>
+    <tr>
+        <td>
+          <img class="product-image" src="<%= pr.getImage() %>" alt="">
+        </td>
+        <td><%= pr.getName() %></td>
+        <td>$<%= pr.getPrice() %></td>
+        <td><%= pr.getUserName() %></td>
+        <td><%= pr.getPhoneNumber() %></td>
+        <td><%=pr.getAddress() %></td>
+         <td>
+             <a href="accept_order?order_id=<%= pr.getOrderId() %>">
+                <button class="accept-button">On the way</button>
+            </a>
+            
+            <a href="order_delivered?order_id=<%= pr.getOrderId()%>">
+             <button class="deliverd-button">Order Delivered</button>
+            </a>
+        </td>
+    </tr>
+    <% } %>
+    <% } %>
 </table>
+<footer>
+<jsp:include page="footer.jsp" /> 
+</footer>
+
+
 
 </body>
 </html>

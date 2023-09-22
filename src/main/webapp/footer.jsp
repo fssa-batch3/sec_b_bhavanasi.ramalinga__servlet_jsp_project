@@ -317,13 +317,7 @@ margin: 0 0 9px 0;
 <div class="container-fluid">
     <div class="row text-center b25 text-light text-uppercase pt-1">
       <div class="col-12 col-md">
-        <a href="" class="nav-link  text-light h5">contact us</a> 
-      </div>
-       <div class="col-12 col-md ">
-          <a href="" class="nav-link text-light h5">shipping</a>
-      </div>
-       <div class="col-12 col-md ">
-          <a href="" class="nav-link text-light h5">term & conditions</a> 
+        <div class="nav-link  text-light h5">contact us</div> 
       </div>
        
     </div>
@@ -342,24 +336,7 @@ margin: 0 0 9px 0;
           <li class="list-group-item text-light bg-dark"><a href="#weTogether" class="text-decoration-none text-light">We're in this together</a></li>
         </ul>
       </div>
-       <div class="col d-none d-md-block">
-        <ul class="list-group list-group-flush rounded-bottom">
-          <li class="list-group-item text-light bg-dark font-weight-bold"><a href="" class="text-decoration-none text-light">Group</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link1</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link2</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link3</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link4</a></li>
-        </ul>
-      </div>
-       <div class="col d-none d-md-block">
-        <ul class="list-group list-group-flush rounded-bottom">
-          <li class="list-group-item text-light bg-dark font-weight-bold"><a href="" class="text-decoration-none text-light">Group</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link1</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link2</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link3</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link4</a></li>
-        </ul>
-      </div>
+      
 
     </div>
 
@@ -370,9 +347,6 @@ margin: 0 0 9px 0;
         <a href="#"><img  class=" mr-2 ml-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/1200px-YouTube_social_white_circle_%282017%29.svg.png"  loading="lazy" width="30" height="30"></a>
         <a href="#"><img class=" mr-2 ml-2" src="https://3.bp.blogspot.com/-NxouMmz2bOY/T8_ac97cesI/AAAAAAAAGg0/e3vY1_bdnbE/s1600/Twitter+logo+2012.png" loading="lazy" width="30" height="30"></a>
         
-      </div>
-      <div class="col-12 text-center pt-1 pb-3">
-        &copy; Bishal roy
       </div>
     </div>
   </div>
@@ -413,9 +387,7 @@ margin: 0 0 9px 0;
         }
       }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </footer>
 </body>
 </html>

@@ -121,9 +121,8 @@ display:flex;
 
 </style>
 <body>
+<jsp:include page="user_header.jsp" />
  <form>
-
-  <h2 style="text-align: center">User Profile Card</h2>
 	<div class="card">
 		<img src="https://iili.io/JHsh1Np.png"  alt="Avatar" style="width:200px" >
 		<%

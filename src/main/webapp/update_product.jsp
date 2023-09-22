@@ -39,7 +39,7 @@ label {
 }
 
 input[type="text"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
@@ -80,9 +80,6 @@ button[type="submit"]:hover {
     
      <label for="image_url">Image url</label>
     <input type="text" id="image_url" name="image_url" value="<%=product.getImageurl() %>" required><br><br>
-
-    <label for="categoryId">Category ID</label>
-    <input type="text" id="categoryId" name="categoryid" value="<%=product.getcategoryId()%>"><br><br>
 
     <label for="Details">Description</label>
     <textarea id="Details" name="Details" required><%=product.getDetails()%></textarea><br><br>

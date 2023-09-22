@@ -64,11 +64,10 @@ import in.fssa.productprice.service.UserService;
 	           
 		        }
 		    }
-		} catch (ServiceException e) {
-		    e.printStackTrace();
-		} catch (ValidationException e) {
-		    e.printStackTrace();
-		}
-	}
+		} catch (ServiceException | ValidationException e) {
+			   String errorMessage = e.getMessage();
+	          request.setAttribute("errorMessage", errorMessage);
+		     request.getRequestDispatcher("/user_login.jsp").forward(request, response);
+		} 	}
 	}
 

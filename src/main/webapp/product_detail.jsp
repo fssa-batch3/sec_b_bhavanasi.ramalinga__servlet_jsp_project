@@ -6,14 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Product Detail </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 /* Style for the card container */
 
 /* Style for the image */
-.cards img {
-  max-width: 200px; 
-  margin-right: 20px; 
-}
+
 
 
 .cards h1 {
@@ -47,10 +46,10 @@
   align-self: center;
 }
 .cards img {
-  max-width: 100%; 
+  max-width: 70%; 
   height: auto; 
   width: 1500px; 
-  height: 300px; 
+  height: 400px; 
 }
 
  
@@ -63,7 +62,7 @@ button:hover {
   background-color: #0056b3; 
 }
 .data{
-margin-left:100px;
+margin-left:70px;
 }
 
 
@@ -102,16 +101,11 @@ Product product = (Product) request.getAttribute("Details");
                 </div>
                <div class ="data">
                 <h2><%= product.getName() %></h2>
-                  <p>Price: <%= product.getPrice() %></p>
-                 <div class="rating">
-                    <p>25% OFF</p>
-                <p> 1200 ratings & 564 reviews</p>
-               </div>
+                <p> <i class="fa fa-rupee" >:</i> <%= product.getPrice() %></p>
                   <div class="description">
-                  <h3>Description is there below:</h3>
+                  <h3>Description:</h3>
                   <%=product.getDetails() %>
-                     
-                  </div>
+                   </div>
                   <div class="book">
                  <a href="/productpriceweb/BookProduct?id=<%=product.getId()%>"><button type="button">Book now</button></a>
                  </div>

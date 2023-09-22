@@ -15,8 +15,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Home Page</title>
     <style>
-      html{
+    
+     html{
         scroll-behavior: smooth;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
@@ -90,6 +92,9 @@
     font-size: 24px; 
     vertical-align: middle; 
     margin-right: 5px; 
+}
+div#logo{
+display:flex;
 }
 ----css-----------------------------------------------------
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600,700);  
@@ -271,11 +276,12 @@ ul{
 .center {
 max-width: 650px;
 width: 100%;
-margin: auto; 
 display: block;
 margin-top: 1rem;;
+margin-left:20px;
+
 } 
-h1 {color: #fff; font-size: 38px;
+h1 {color: black; font-size: 38px;
 font-family: raleway;
 text-transform: uppercase;
 font-weight: 800;
@@ -313,6 +319,22 @@ margin: 0 0 9px 0;
   }
 }
 
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px; 
+            margin-right: 10px; 
+        }
+        h3{
+        margin-top:25px;
+        }
+
       
     </style>
     <title>Home Page</title>
@@ -323,7 +345,9 @@ margin: 0 0 9px 0;
 <header>
         <div id="logo">
           <img src="https://iili.io/J9zJZCX.png" alt="Logo">
+          <h3>SoundMart</h3>
         </div>
+        
         <div id="menu">
             <ul>
                  <li><a href="user/new">Register</a></li>
@@ -334,14 +358,13 @@ margin: 0 0 9px 0;
     </header>
     
     <div class="center">
-  <h1>Shop Elecronics </h1>
+  <h1>Shop Electronics </h1>
 
   </div> 
   
   
   <!-- content start-->
  <div class="container" id="depart">
-  <h3 class=" d-flex  justify-content-center  justify-content-sm-start mt-5 mb-3">Shop by Department</h3>
   <div class="row  justify-content-center">
    <div class="col-12 col-sm-4 col-lg">
       <a href="#" class="a text-secondary nav-link ">
@@ -511,15 +534,6 @@ margin: 0 0 9px 0;
       <div class="col-12 col-md">
         <a href="" class="nav-link  text-light h5">contact us</a> 
       </div>
-      <div class="col-12 col-md">
-        <a href="" class="nav-link  text-light h5">Live chat</a> 
-      </div>
-       <div class="col-12 col-md ">
-          <a href="" class="nav-link text-light h5">shipping</a>
-      </div>
-       <div class="col-12 col-md ">
-          <a href="" class="nav-link text-light h5">term & conditions</a> 
-      </div>
        
     </div>
 
@@ -537,42 +551,6 @@ margin: 0 0 9px 0;
           <li class="list-group-item text-light bg-dark"><a href="#weTogether" class="text-decoration-none text-light">We're in this together</a></li>
         </ul>
       </div>
-       <div class="col d-none d-md-block">
-        <ul class="list-group list-group-flush rounded-bottom">
-          <li class="list-group-item text-light bg-dark font-weight-bold"><a href="" class="text-decoration-none text-light">Group</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link1</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link2</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link3</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link4</a></li>
-        </ul>
-      </div>
-       <div class="col d-none d-md-block">
-        <ul class="list-group list-group-flush rounded-bottom">
-          <li class="list-group-item text-light bg-dark font-weight-bold"><a href="" class="text-decoration-none text-light">Group</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link1</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link2</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link3</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link4</a></li>
-        </ul>
-      </div>
-       <div class="col d-none d-md-block">
-        <ul class="list-group list-group-flush rounded-bottom">
-          <li class="list-group-item text-light bg-dark font-weight-bold"><a href="" class="text-decoration-none text-light">Group</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link1</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link2</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link3</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link4</a></li>
-        </ul>
-      </div>
-       <div class="col d-none d-md-block">
-        <ul class="list-group list-group-flush rounded-bottom">
-          <li class="list-group-item text-light bg-dark font-weight-bold"><a href="" class="text-decoration-none text-light">Group</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link1</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link2</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link3</a></li>
-          <li class="list-group-item text-light bg-dark"><a href="" class="text-decoration-none text-light">link4</a></li>
-        </ul>
-      </div>
 
     </div>
 
@@ -584,28 +562,13 @@ margin: 0 0 9px 0;
         <a href="#"><img class=" mr-2 ml-2" src="https://3.bp.blogspot.com/-NxouMmz2bOY/T8_ac97cesI/AAAAAAAAGg0/e3vY1_bdnbE/s1600/Twitter+logo+2012.png" loading="lazy" width="30" height="30"></a>
         
       </div>
-      <div class="col-12 text-center pt-1 pb-3">
-        &copy; Bishal roy
-      </div>
+      
     </div>
   </div>
 <!-- footer -->
 <!-- scroll go top start -->
 <a id="myBtn" class="gotopbtn" href="#body-start"><img src="https://cdn3.iconfinder.com/data/icons/road-sign/154/road-sign-top-arrow-yellow-attention-512.png" width="50" height="50" loading="lazy"></a>
-<!-- scroll end -->
- <!-- by Ruben Vardanyan -->
-<!-- loading start -->
-<div class="loader-wrapper"  >
-  <div class="loader-inner">
-     <div class="st1"></div>
-     <div class="st2"></div>
-     <div class="st3"></div>
-  </div>
-</div>
-<!-- loading end -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -628,8 +591,5 @@ margin: 0 0 9px 0;
         }
       }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>

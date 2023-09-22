@@ -6,6 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+ <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+	
+    <style>
+    
 <style>
 /* Style for the page header */
 h1 {
@@ -63,10 +70,16 @@ input[disabled] {
     color: #666;
     cursor: not-allowed;
 }
+h1{
+display: flex;
+justify-content: center;
+margin-top:100px;
+}
 
 </style>
 </head>
 <body>
+  <jsp:include page="seller_header.jsp" />
    <h1> Update user </h1>
     
    
@@ -77,21 +90,14 @@ input[disabled] {
 		%>
 		
 				
-		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
-
-
-		<% if(errorMsg != null && user!=null) { %>
-		
-		<script> alert("<%=errorMsg%>"); </script>
-		
-		<script>
-     document.getElementById("name").value = "<%= user != null ? user.getName() : "" %>";
-     document.getElementById("email").value = "<%= user != null ? user.getEmail() : "" %>";
-     document.getElementById("phoneNumber").value = "<%= user != null ? user.getPhoneNumber() : "" %>";
-     document.getElementById("password").value = "<%= user != null ? user.getPassword() : "" %>";
-      document.getElementById("address").value = "<%= user != null ? user.getAddress() : "" %>";	
-   </script>
-
+			<%
+       String error = (String) request.getAttribute("errorMessage");
+    if (error != null && !("".equals(error))) {
+      %>
+        <script>
+        Notify.error(
+        `<%=error%>`
+        );
 			<% } %>
     <form action="update" method="post">
     
@@ -104,7 +110,7 @@ input[disabled] {
     <input type="number" id="phoneNumber" name="phoneNumber" disabled value="<%= user.getPhoneNumber() %>">
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required value="<%= user.getPassword() %>">
-    <label for="address">Address:</label>
+    <label for="address">Role:</label>
      <input type="role" id="role" name="role" required disabled  value="<%= user.getRole() %>">
     <label for="address">Address:</label>
     <textarea id="address" name="Address" required><%= user != null ? user.getAddress() : "" %></textarea>

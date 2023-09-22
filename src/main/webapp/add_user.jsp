@@ -4,8 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
+<title>Register</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+ <style>
 /* Apply basic styling to the form container */
 .register {
     max-width: 400px;
@@ -98,17 +102,29 @@ p a {
 .submit:hover {
     background-color: #0056b3;
 }
+select#role{
+width: 100px;
+    height: 20px;
+}
 
 </style>
 </head>
 <body>
 
 				
-		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
-		<% if(errorMsg != null) { %>
-		
-		<script> alert("<%=errorMsg%>"); </script>
-		<% } %>
+		<%
+       String error = (String) request.getAttribute("errorMessage");
+    if (error != null && !("".equals(error))) {
+      %>
+        <script>
+        Notify.error(
+        `<%=error%>`
+        );
+        </script>
+        <%
+        }
+       %>
+
 
  <header>
         <div class="container">
@@ -126,27 +142,31 @@ p a {
             <h2> SIGN UP : </h2>
             <div>
                 <label> Name: </label>
-                <input type="text" id="uname" name="name" required="true">
+                <input type="text" id="uname" name="name"    required="true"   >
             </div>
             
             <div>
                 <label> Email: </label>
-                <input type="text" id="email" name="email" required="true">
+                <input type="text" id="email" name="email"     pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"  required="true">
             </div>
 
             <div>
                 <label> Phone number: </label>
-                <input type="tel" id="phonenumber" name="phoneNumber" placeholder="+91" required="true">
+                <input type="tel" id="phonenumber" name="phoneNumber"    pattern="[6-9]{1}[0-9]{9}"   required="true">
             </div>
 
             <div>
                 <label> Create Password: </label>
-                <input type="password" id="password" name="password" required="true" >
+                <input type="password" id="password" name="password"    required="true" >
                 <p> (Pattern: At least 8 characters including uppercase, lowercase, number, and special characters) </p>
             </div>
              <div>
                 <label> Address: </label>
                 <input type="text" id="Address" name="Address"  required="true">
+            </div>
+            <div>
+                <label> Pincode: </label>
+                <input type="text" id="pincode" name="pincode"  required="true">
             </div>
              <div>
                 <label> Select Role: </label>
@@ -157,7 +177,7 @@ p a {
             </div>
 
             <p>
-              Already have an account? <a href="user/login"> LOG IN </a> 
+              Already have an account? <a href="/productpriceweb/user/login"> LOG IN </a> 
             </p>
 
             <button type="submit" class="submit"> SUBMIT </button>

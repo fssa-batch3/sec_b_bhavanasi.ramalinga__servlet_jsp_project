@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Products</title>
+<title>Product List </title>
 <style>
 .header{
 display:flex;
@@ -35,7 +35,7 @@ margin:10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
-            width: 300px;
+            width: 400px;
             margin: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -47,7 +47,7 @@ margin:10px;
 
         .product-image {
             max-width: 100%;
-            height: auto;
+            max-height:200px;
         }
 
 
@@ -72,8 +72,14 @@ margin:10px;
         }
        
 footer{
-margin-top:500px;
+margin-top:100px;
+width:100%;
 }
+.message{
+margin-top:200px;
+margin-bottom:170px;
+}
+
 </style>
 </head>
 
@@ -86,20 +92,28 @@ margin-top:500px;
 
     
                 
-      <% for (Product pr : product) { %>
-    <div class="product-card">
-        <img class="product-image" src="<%= pr.getImageurl() %>" alt="<%= pr.getName() %>">
-        <h2><%= pr.getName() %></h2>
-        <h3>Price: $<%= pr.getPrice() %></h3>
-        <p><%= pr.getDetails() %></p>
-        <div class="action-buttons">
-             <a href="product/edit?id=<%= pr.getId() %>" class="action-button">Edit</a>
-            <a href="product/delete?id=<%= pr.getId() %>" class="action-button">Delete</a>
-        </div>
+      <% if (product.isEmpty()) { %>
+      <div class="message">
+     <h2>No products added by the seller.</h2>
     </div>
+<% } else { %>
+    <% for (Product pr : product) { %>
+        <div class="product-card">
+            <img class="product-image" src="<%= pr.getImageurl() %>" alt="<%= pr.getName() %>">
+            <h2><%= pr.getName() %></h2>
+            <h3> Rs.<%= pr.getPrice() %></h3>
+            <p><%= pr.getDetails() %></p>
+            <div class="action-buttons">
+                <a href="product/edit?id=<%= pr.getId() %>" class="action-button">Edit</a>
+                <a href="product/delete?id=<%= pr.getId() %>" class="action-button">Delete</a>
+            </div>
+        </div>
     <% } %>
+<% } %>
     
- 
+ <footer>
+<jsp:include page="footer.jsp" />
+</footer>
 
 
 </body>

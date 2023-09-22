@@ -53,7 +53,7 @@ margin-top:100px;
   font-size: 24px;
   margin-bottom: 20px;
 }
-.description h3, p{
+.description h4, p{
 margin-left:50px;
 }
 
@@ -122,10 +122,11 @@ button[type="submit"] {
     display:flex;
     }
     .productImage img{
-    vertical-align: middle;
+   vertical-align: middle;
     border-style: none;
     margin: 40px;
-    width: 80%;
+    width: 50%;
+    max-height: 300px;
     }
   
 </style>
@@ -150,15 +151,15 @@ button[type="submit"] {
                 </div>
                  <div class ="data">
                  <div class="name">
-                 <h3>Name:</h3>
-                 <h3><%= pdt.getName() %></h3>
+                 <h4>Name:</h4>
+                 <h4><%= pdt.getName()%></h4>
                  </div>
                  <div class="name">
                 
-                  <h3>Price: <%= pdt.getPrice() %></h3>
+                  <h4>Rs: <%= pdt.getPrice() %></h4>
                   </div>
                      <div class="description">
-                  <h3>Description is there below:</h3>
+                  <h4>Description is there below:</h4>
                 <p><%=pdt.getDetails() %></p>
                      
                   </div>
@@ -171,7 +172,7 @@ button[type="submit"] {
      <div class="userdetails">
     
      <h3>User Details</h3>
-    <label for="name">Name:</label>
+     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required value="<%= user.getName() %>">
     <label for="phoneNumber">Phone number:</label>
     <input type="number" id="phoneNumber" name="phoneNumber"  value="<%= user.getPhoneNumber() %>">
@@ -184,7 +185,7 @@ button[type="submit"] {
     <label for="address">Address:</label>
     <textarea id="add" name="add" required><%= user.getAddress() %></textarea>
      <label for="pincode">Pincode:</label>
-    <input type="text" id="pincode" name="pincode" required="true" >
+    <input type="text" id="pincode" name="pincode" value="<%=user.getPincode() %>">
     
      <input type="hidden" name="pdtid" value="<%= pdt.getId() %>">
    <input type="hidden" name="sellerid" value="<%= pdt.getUserId() %>">

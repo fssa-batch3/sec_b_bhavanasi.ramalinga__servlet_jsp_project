@@ -121,6 +121,14 @@ button {
 margin-bottom:20px;
 }
 
+.no-products{
+margin-left:200px;
+}
+.no-products h2{
+  margin:150px;
+}
+
+
 </style>
 
 </head>
@@ -132,12 +140,13 @@ margin-bottom:20px;
  
   <sections>
        
-<% ProductService sr = new ProductService();%>
+<% ProductService sr = new ProductService(); %>
 <% Set<Product> products = (Set<Product>) request.getAttribute("prodByCate"); %>
 
 <div class="project">
     <%
-    for (Product ps : products) {
+    if (products != null && !products.isEmpty()) {
+        for (Product ps : products) {
     %>
     <div class="product">
         <div class="product-info">
@@ -146,21 +155,24 @@ margin-bottom:20px;
             </div>
             <div>
                 <h2><%= ps.getName() %></h2>
-                <h3>Price:$ <%= ps.getPrice() %></h3>
+                <h3>Rs. <%= ps.getPrice() %></h3>
             </div>
-           <a href="detail?id=<%=ps.getId()%>"><button>View Details</button></a>
-
+            <a href="detail?id=<%= ps.getId() %>"><button>View Details</button></a>
         </div>
-         
     </div>
-   
-    <%	
+    <%
+        }
+    } else {
+    %>
+    <div class="no-products">
+        <h2>No products added by seller.</h2>
+    </div>
+    <%
     }
     %>
-    </div>
-    </sections>
-   
 </div>
+</sections>
+
 <footer>
 <jsp:include page="footer.jsp" />
 </footer>

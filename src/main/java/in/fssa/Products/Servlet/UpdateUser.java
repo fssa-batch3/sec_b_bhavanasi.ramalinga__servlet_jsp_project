@@ -6,9 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.fssa.productprice.exception.ServiceException;
 import in.fssa.productprice.exception.ValidationException;
+import in.fssa.productprice.model.User;
 import in.fssa.productprice.model.UserEntity;
 import in.fssa.productprice.service.UserService;
 
@@ -22,9 +24,13 @@ public class UpdateUser extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-         UserEntity user = new UserEntity();
+             UserEntity user = new UserEntity();
+             int userId = (Integer) request.getSession().getAttribute("userId");
+             
 		
          try {
+        	       User users = UserService.findById(userId);
+        	      
         	    String nameParameter = request.getParameter("name");
 
         	    if (nameParameter == null || nameParameter.trim().isEmpty()) {
@@ -47,12 +53,15 @@ public class UpdateUser extends HttpServlet {
         	    }
 		
 		
-		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
-		} else {
+		     if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
+			  System.out.println("password cannot be null or empty");
+			 } else if (request.getParameter("Address") == null || request.getParameter("Address").isEmpty()) {
+			    System.out.println("Address cannot be null or empty");
+		  } else {
 			user.setPassword(request.getParameter("password"));
 			user.setAddress(request.getParameter("Address"));
 			user.setEmail(request.getParameter("email"));
+			user.setRole(request.getParameter("role"));
 			
 		}
 		
@@ -63,18 +72,36 @@ public class UpdateUser extends HttpServlet {
 		
 		String idParams = request.getParameter("id");
 		
-		int id = Integer.parseInt(idParams);
+		  int id = Integer.parseInt(idParams);
 		
-		userService.update(id, user);
+		  userService.update(id, user);
+		   
 		
-		response.sendRedirect(request.getContextPath()+"/category_list.jsp");
+		   if(users.getRole().equalsIgnoreCase("seller")) {
+        	
+        	HttpSession session = request.getSession();
+           
+            session.setAttribute("userId", id);
+            response.sendRedirect(request.getContextPath() + "/products_list");
+        	
+        } else {
+       
+        HttpSession session = request.getSession();
+       
+        session.setAttribute("userId", id);
+        response.sendRedirect(request.getContextPath() + "/category_list");
+       
+        }
+    
 		
+//		response.sendRedirect(request.getContextPath()+"/category_list.jsp");
 		
-		} catch (ValidationException e) {
-			e.printStackTrace();
-		} catch (ServiceException   e) {
-			e.printStackTrace();
-		}
+         } catch (ServiceException | ValidationException e) {
+		
+		 String errorMessage = e.getMessage();
+		 request.setAttribute("errorMessage", errorMessage);
+	     request.getRequestDispatcher("/profile_edit.jsp").forward(request, response);
+         }
 		
 	  }
 	  }

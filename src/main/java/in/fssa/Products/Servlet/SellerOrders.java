@@ -27,7 +27,7 @@ import in.fssa.productprice.service.UserService;
 /**
  * Servlet implementation class SellerProduct
  */
-@WebServlet("/seller/order")
+@WebServlet("/seller_order")
 public class SellerOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +42,7 @@ public class SellerOrders extends HttpServlet {
 			 	
 			       
 
-			  Set<OrderEntity> order = OrderService.findOrdersBySellerId(userId);
+		  Set<OrderEntity> order = OrderService.findOrdersBySellerId(userId);
 			  request.setAttribute("orderList", order);
 
 		    	System.out.print(order);

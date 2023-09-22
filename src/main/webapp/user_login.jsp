@@ -5,6 +5,11 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Login Page</title>
+    <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+	
     <style>
         /* Global styles */
         body {
@@ -115,12 +120,18 @@
         </div>
     </header>
     
-    			
-		<% String errorMsg = (String) request.getAttribute("userDetails"); %>
-		<% if(errorMsg != null) { %>
-		
-		<script> alert("<%=errorMsg%>"); </script>
-		<% } %>
+    		<%
+       String error = (String) request.getAttribute("errorMessage");
+    if (error != null && !("".equals(error))) {
+      %>
+        <script>
+        Notify.error(
+        `<%=error%>`
+        );
+        </script>
+        <%
+        }
+       %>
 		
     <section class="container">
         <form role="form" action="login" method="POST" >

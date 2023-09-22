@@ -16,7 +16,7 @@ import in.fssa.productprice.service.ProductService;
 /**
  * Servlet implementation class UserListProducts
  */
-@WebServlet("/product/userlist")
+@WebServlet("/product/list")
 public class UserListProducts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    

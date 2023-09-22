@@ -49,7 +49,13 @@
     vertical-align: middle; 
     margin-right: 5px; 
 }
-    
+div#logo{
+display:flex;
+}
+ div#logo h3{
+ margin-top:25px;
+ color:white;
+ }
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -57,17 +63,15 @@
 <body>
 <header>
  <div id="logo">
-          <img src="https://iili.io/J9zJZCX.png" alt="Logo">
+         <a href="/productpriceweb/products_list"> <img src="https://iili.io/J9zJZCX.png" alt="Logo"></a>
+        <a href="/productpriceweb/products_list"> <h3>SoundMart</h3></a>
         </div>
-      
-            
-          
             <div id="menu">
             <ul>
                
-                <li><a href="seller/order">Orders</a></li>
+                <li><a href="seller_order">Orders</a></li>
                  <li> <a href="add_product.jsp">Create Product</a></li>
-              <li><a href="user/edit"><i class="fa fa-user" style="font-size:36px"></i></a></li>
+              <li><a href="profile"><i class="fa fa-user" style="font-size:36px"></i></a></li>
 
             </ul>
         </div>

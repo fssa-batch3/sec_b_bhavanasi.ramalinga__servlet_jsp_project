@@ -45,6 +45,7 @@ public class CreateUser extends HttpServlet {
   		
 
   			user.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
+  			user.setPincode(Integer.parseInt(request.getParameter("pincode")));
   			user.setAddress(request.getParameter("Address"));
 
   		
@@ -54,22 +55,23 @@ public class CreateUser extends HttpServlet {
   			user.setPassword(request.getParameter("password"));
   		}
   	
-  		user.setRole(request.getParameter("role"));
+  		   user.setRole(request.getParameter("role"));
+  		   
   		
-  		System.out.println(user.toString());
+  		    System.out.println(user.toString());
   		
-  		UserService userService = new UserService();
-  		userService.create(user);
+  		     UserService userService = new UserService();
+  		     userService.create(user);
   		
-  		response.sendRedirect(request.getContextPath()+"/user/login");
+  		  response.sendRedirect(request.getContextPath()+"/user/login");
   		
-  		} catch (ValidationException | ServiceException e) {
-  			e.printStackTrace();
-  			request.setAttribute("errorMessage", e.getMessage());
+  		   } catch (ValidationException | ServiceException e) {
+  			   e.printStackTrace();
+  			  request.setAttribute("errorMessage", e.getMessage());
   			
-  			RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
+  			   RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
   			
-  			rd.forward(request, response);
+  			     rd.forward(request, response);
   		}
   		
 	}

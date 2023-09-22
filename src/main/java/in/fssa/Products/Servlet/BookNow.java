@@ -88,6 +88,7 @@ public class BookNow extends HttpServlet {
 			String image = request.getParameter("image");
 			String productName = request.getParameter("productName");
 			String userName = request.getParameter("username");
+			order.setPincode(Integer.parseInt(request.getParameter("pincode")));
 			order.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
 			order.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 			order.setPrice(Double.parseDouble(request.getParameter("price")));

@@ -58,11 +58,14 @@ flex-direction: row;
   
  
 }
-.logo a{
+.a{
 color:white;
+text-decoration:none;
 }
  .logo h3{
  margin:0px;
+ color:white;
+ 
  }  
  .name a {
  text-decoration:none;
@@ -97,15 +100,14 @@ if (user == null) {
 
 <div class="logo" id="logo">
          <a href="/productpriceweb/category_list.jsp"><img src="https://iili.io/J9zJZCX.png" alt="Logo"></a>
-           <a href="user_dashboard"> <h3><%= user.getName()  %></h3> </a>
+          <a href="/productpriceweb/category_list.jsp"> <h3>SoundMart</h3></a>
         </div>
           <div id="menu">
             <ul>
                 
                 
-                <li><i class="fas fa-shopping-cart" style="font-size: 36px"></i></li>
-                <li><i class="far fa-heart" style="font-size: 36px"></i></li>
-                <li><a href="">My Orders</a></li>
+               
+                <li><a href="/productpriceweb/orders">My Orders</a></li>
          <li><a href="/productpriceweb/profile?id=<%= user.getId() %>"><i class="fa fa-user" style="font-size:36px"></i></a></li>
    
             </ul>
