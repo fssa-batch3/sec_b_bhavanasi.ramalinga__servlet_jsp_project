@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="in.fssa.productprice.model.Category"%>
 <%@page import="in.fssa.productprice.service.CategoryService"%>
 <%@page import="java.util.Set"%>
@@ -435,11 +436,11 @@ width:1000px;
 
 
 
-  <% Set<CategoryEntity> category =(Set<CategoryEntity>) request.getAttribute("categoryList"); %>
+  <% List<CategoryEntity> category =(List<CategoryEntity>) request.getAttribute("categoryList"); %>
 
   <sections>
    <% CategoryService sr = new CategoryService(); %>
-<% Set<Category> categoriesList = sr.listAllCategory(); %>
+<% List<Category> categoriesList = sr.listAllCategory(); %>
 
    
  <div class="w3-content w3-section" style="max-width:500px">

@@ -147,7 +147,7 @@
                 <input type="password" placeholder="*******" id="password" name="password" required="true">
             </div>
 
-            <p>Create a new account <a href="user/new">Sign up</a></p>
+           
 
             <div>
                 <a href="List/Category"><button class="btn" type="submit">Submit</button></a>

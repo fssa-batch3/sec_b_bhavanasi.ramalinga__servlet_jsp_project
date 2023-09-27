@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,6 +69,9 @@ public class BookNow extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		 PrintWriter out = response.getWriter();
+		 
 		 String pincodeParam = request.getParameter("pincode");
 		 
 
@@ -87,7 +91,7 @@ public class BookNow extends HttpServlet {
 			String add = request.getParameter("add");
 			String image = request.getParameter("image");
 			String productName = request.getParameter("productName");
-			String userName = request.getParameter("username");
+			String userName = request.getParameter("name");
 			order.setPincode(Integer.parseInt(request.getParameter("pincode")));
 			order.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
 			order.setQuantity(Integer.parseInt(request.getParameter("quantity")));
@@ -105,19 +109,23 @@ public class BookNow extends HttpServlet {
             
    
 		    
-           OrderService orderService = new OrderService();
+               OrderService orderService = new OrderService();
 			   orderService.create(order);
 
-			response.sendRedirect(request.getContextPath() + "/orders");
+			   response.sendRedirect(request.getContextPath() + "/orders");
 
-		} catch (ValidationException e) {
+		      } catch (ValidationException e) {
 
-			e.printStackTrace();
+		    	  e.printStackTrace();
+			 		out.println("<script>alert('"+ e.getMessage() +"');</script>");
+			 		out.println("<script>window.history.back();</script>");
 		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		      } catch (Exception e) {
+		    	  e.printStackTrace();
+			 		out.println("<script>alert('"+ e.getMessage() +"');</script>");
+			 		out.println("<script>window.history.back();</script>");
+		 }
 
-	}
+	 }
 
-}
+  }

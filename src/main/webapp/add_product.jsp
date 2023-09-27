@@ -5,9 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Create Product</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
-<script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
- <style>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script 
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+ 
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -108,23 +110,15 @@ nav a:hover {
 </style>
 </head>
 <body>
-			
-		<%
-   String error = (String) request.getAttribute("errorMessage");
-   if (error != null && !error.isEmpty()) {
-%>
-   <script>
-      Notify.error('<%=error%>');
-   </script>
-<%
-   }
-%>
+				
+		
 
-<jsp:include page="seller_header.jsp" />
 
- <form action="products/create" method="POST">
- <label for="name">productName</label>
-        <input type="text"  name="name" required><br><br>
+    <jsp:include page="seller_header.jsp" />
+
+     <form action="products/create" method="POST">
+     <label for="name">productName</label>
+     <input type="text"  name="name" required><br><br>
         
         <label for="price">productPrice</label>
         <input type="text"  name="price" required><br><br>
@@ -149,9 +143,7 @@ nav a:hover {
       <option value="8">Tube Lights and Bulbs</option> 
       <option value="10">Earphones</option> 
       <option value="12">Iron boxes </option>
-         
-    
-</select><br><br>
+    </select><br><br>
 
         
        <button type="submit">Submit</button>

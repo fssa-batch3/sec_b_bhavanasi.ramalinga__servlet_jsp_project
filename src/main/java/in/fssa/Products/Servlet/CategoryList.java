@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import in.fssa.productprice.exception.ServiceException;
@@ -28,7 +29,7 @@ public class CategoryList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			Set<Category> category = CategoryService.listAllCategory();
+			List<Category> category = CategoryService.listAllCategory();
 			request.setAttribute("categoryList", category);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/category_list.jsp");
 			dispatcher.forward(request, response);

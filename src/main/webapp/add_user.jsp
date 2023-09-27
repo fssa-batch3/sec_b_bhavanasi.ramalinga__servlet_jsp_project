@@ -102,8 +102,8 @@ p a {
 .submit:hover {
     background-color: #0056b3;
 }
-select#role{
-width: 100px;
+   select#role{
+   width: 100px;
     height: 20px;
 }
 
@@ -111,32 +111,10 @@ width: 100px;
 </head>
 <body>
 
-				
-		<%
-       String error = (String) request.getAttribute("errorMessage");
-    if (error != null && !("".equals(error))) {
-      %>
-        <script>
-        Notify.error(
-        `<%=error%>`
-        );
-        </script>
-        <%
-        }
-       %>
-
-
- <header>
-        <div class="container">
-           <a href="/login">Login</a>
-            <a href="#">Register</a>
-        </div>
-    </header>		
+	
 
 <section>
-    <form role="form" action="create" method="POST" >
-    
-   
+    <form role="form" action="new" method="POST" >
 		
         <div class="register">
             <h2> SIGN UP : </h2>

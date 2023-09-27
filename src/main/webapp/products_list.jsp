@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.awt.Button"%>
 <%@page import="java.util.Set"%>
 <%@page import="in.fssa.productprice.service.ProductService"%>
@@ -87,7 +88,7 @@ margin-bottom:170px;
 <jsp:include page="seller_header.jsp" /> 
 
    <%
-    Set<Product> product = (Set<Product>) request.getAttribute("productDetails");
+    List<Product> product = (List<Product>) request.getAttribute("productDetails");
    %>
 
     

@@ -40,21 +40,18 @@ public class SellerOrders extends HttpServlet {
 		 try {
 			  int userId = userIdObject.intValue();
 			 	
-			       
-
-		  Set<OrderEntity> order = OrderService.findOrdersBySellerId(userId);
-			  request.setAttribute("orderList", order);
-
-		    	System.out.print(order);
+			   List<OrderEntity> order = OrderService.findOrdersBySellerId(userId);
+			   request.setAttribute("orderList", order);
+               System.out.println(order);
 		    	RequestDispatcher dispatcher = request.getRequestDispatcher("/seller_orders.jsp");
 				dispatcher.forward(request, response);
 		
 		      } catch (NumberFormatException e) {
-			 e.printStackTrace();
+			   e.printStackTrace();
 		     } catch (ValidationException e) {
 			      e.printStackTrace();
-		         } catch (Exception e) {
-				  e.printStackTrace();
+		      } catch (Exception e) {
+				 e.printStackTrace();
 			} 
 		
 		

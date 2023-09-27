@@ -128,7 +128,10 @@ button[type="submit"] {
     width: 50%;
     max-height: 300px;
     }
-  
+  .productImage{
+  display:flex;
+  justify-content:center;
+  }
 </style>
 
 <body>
@@ -159,7 +162,7 @@ button[type="submit"] {
                   <h4>Rs: <%= pdt.getPrice() %></h4>
                   </div>
                      <div class="description">
-                  <h4>Description is there below:</h4>
+                  <h4>Description:</h4>
                 <p><%=pdt.getDetails() %></p>
                      
                   </div>
@@ -175,7 +178,7 @@ button[type="submit"] {
      <label for="name">Name:</label>
     <input type="text" id="name" name="name" required value="<%= user.getName() %>">
     <label for="phoneNumber">Phone number:</label>
-    <input type="number" id="phoneNumber" name="phoneNumber"  value="<%= user.getPhoneNumber() %>">
+    <input type="number" id="phoneNumber" name="phoneNumber"   pattern="[6-9]{1}[0-9]{9}"  required  value="<%= user.getPhoneNumber() %>">
       <div class="quantity">
 				<label> Quantity: </label> <input type="number"
 					id="product_quantity" name="quantity" required="true"
@@ -185,7 +188,7 @@ button[type="submit"] {
     <label for="address">Address:</label>
     <textarea id="add" name="add" required><%= user.getAddress() %></textarea>
      <label for="pincode">Pincode:</label>
-    <input type="text" id="pincode" name="pincode" value="<%=user.getPincode() %>">
+    <input type="text" id="pincode" name="pincode"  required value="<%=user.getPincode() %>">
     
      <input type="hidden" name="pdtid" value="<%= pdt.getId() %>">
    <input type="hidden" name="sellerid" value="<%= pdt.getUserId() %>">
@@ -200,7 +203,7 @@ button[type="submit"] {
     </div>
     </form>
    
-<% } else { %>
+  <% } else { %>
     <p>Product Not Found.</p>
 <% } %>
  

@@ -53,51 +53,52 @@ margin-bottom:20%;
 </header>
     
  <%  
-  Set<OrderEntity> orderAttribute = (Set<OrderEntity>) request.getAttribute("orderList");
+  List<OrderEntity> orderAttribute = (List<OrderEntity>) request.getAttribute("orderList");
 
   User user = (User) request.getAttribute("userDetails");
 %>
 
 <sections>
- <% if (orderAttribute.isEmpty()) { %>
+<% if (orderAttribute == null || orderAttribute.isEmpty()) { %>
    <div class="message">
-        <h2>Sorry, You did not order products .</h2></div>
-    
-    <% } else { %>
-     <div class="names">
-   <h2>My Orders</h2>
-    </div>
-
-  <%
-
-    for (Order ps : orderAttribute) {
-  %>
- 
+        <h2>Sorry, You did not order products.</h2>
+   </div>
+<% } else { %>
+   <div class="names">
+      <h2>My Orders</h2>
+   </div>
+   
+   <%
+      for (Order ps : orderAttribute) {
+   %>
    <div class="products">
-    <div class="item">
-      <img src="<%= ps.getImage() %>"> 
-    </div>
-    <div class="datadetails">
-      <h2><%= ps.getName()%></h2>
-      <h3>Price: <%= ps.getPrice()%></h3>
-      <h3>Quantity: <%= ps.getQuantity() %></h3>
-       <h3>Status:</h3>
-       <div class="status">
-      <h3> <%= ps.getStatus() %></h3>
-       </div>
-    </div>
-    </div>
-  <%
-    }
-  %>
-   <% } %>
- 
-
- 
+      <div class="item">
+         <img src="<%= ps.getImage() %>">
+      </div>
+      <div class="datadetails">
+         <h2><%= ps.getName()%></h2>
+         <h3>Price: <%= ps.getPrice()*ps.getQuantity()%></h3>
+         <h3>Quantity: <%= ps.getQuantity() %></h3>
+         <h3>Status:</h3>
+         <div class="status">
+            <h3> <%= ps.getStatus() %></h3>
+         </div>
+         
+         <a href="cancel_order?order_id=<%= ps.getOrderId() %>">
+            <button  id="cancelOrderButton"  class="cancel-button"  >Cancel Order </button>
+         </a>
+      </div>
+   </div>
+   <%
+      }
+   %>
+<% } %>
 </sections>
+
 <footer>
 <jsp:include page="footer.jsp" />
-</footer>
-   
+</footer> 
+
+  
 </body>
 </html>

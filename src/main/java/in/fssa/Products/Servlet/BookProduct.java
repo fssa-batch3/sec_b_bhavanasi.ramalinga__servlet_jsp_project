@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +29,9 @@ public class BookProduct extends HttpServlet {
       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		 PrintWriter out = response.getWriter();
+		 
+		
       Integer userIdObject = (Integer) request.getSession().getAttribute("userId");
              int userId = userIdObject.intValue();
 		
@@ -51,7 +55,11 @@ public class BookProduct extends HttpServlet {
 	
 		} catch (PersistenceException | ValidationException | ServiceException e) {
 			
-			e.printStackTrace();
+			 e.printStackTrace();
+		 		out.println("<script>alert('"+ e.getMessage() +"');</script>");
+		 		out.println("<script>window.history.back();</script>");
+			
+			
 		}
 		
 		

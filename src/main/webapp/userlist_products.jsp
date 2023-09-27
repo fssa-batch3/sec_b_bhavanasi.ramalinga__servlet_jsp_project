@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.awt.Button"%>
 <%@page import="java.util.Set"%>
 <%@page import="in.fssa.productprice.service.ProductService"%>
@@ -18,6 +19,7 @@
     width: 90%;
     margin: 50px auto;
     margin-top: 200px;
+    flex-wrap:wrap;
    
    
 }
@@ -42,13 +44,15 @@ button {
     border: 1px solid #ccc;
     padding: 20px;
     margin-top:100px;
+    
 }
 
-.product-info {
+.product-infosis {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top:100px;
+    margin-bottom:30px;
+
 }
 
 .product img {
@@ -64,6 +68,10 @@ button {
 
 .product p {
     color: #888;
+}
+h3{
+display:flex;
+justify-content: center;
 }
  
 
@@ -129,6 +137,7 @@ margin-left:200px;
 }
 
 
+
 </style>
 
 </head>
@@ -141,7 +150,7 @@ margin-left:200px;
   <sections>
        
 <% ProductService sr = new ProductService(); %>
-<% Set<Product> products = (Set<Product>) request.getAttribute("prodByCate"); %>
+<% List<Product> products = (List<Product>) request.getAttribute("prodByCate"); %>
 
 <div class="project">
     <%
@@ -149,7 +158,7 @@ margin-left:200px;
         for (Product ps : products) {
     %>
     <div class="product">
-        <div class="product-info">
+        <div class="product-infosis">
             <div>
                 <img src="<%= ps.getImageurl() %>" alt="<%= ps.getName() %>">
             </div>

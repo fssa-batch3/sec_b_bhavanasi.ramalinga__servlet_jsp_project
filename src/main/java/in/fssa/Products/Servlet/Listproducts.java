@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -41,7 +42,7 @@ public class Listproducts extends HttpServlet {
                 User user = UserService.findById(userId);
 
                 
-                Set<Product> product = ProductService.findAllProductsBySellerId(userId);
+                List<Product> product = ProductService.findAllProductsBySellerId(userId);
                 
                    request.setAttribute("productDetails", product);
                 

@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +26,8 @@ public class CreateProducts extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		  PrintWriter out = response.getWriter();
 		
     Integer userIdObject = (Integer) request.getSession().getAttribute("userId");
 		
@@ -61,12 +64,16 @@ public class CreateProducts extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath()+"/products_list");
 		
-		} catch (ValidationException | PersistenceException e) {
-			e.printStackTrace();
-			request.setAttribute("errorMessage", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
-			
-			rd.forward(request, response);
+		} catch (Exception e) {
+			 e.printStackTrace();
+	 			out.println("<script>alert('"+ e.getMessage() +"');</script>");
+	 			out.println("<script>window.history.back();</script>");
+	 			
+//			e.printStackTrace();
+//			request.setAttribute("errors", e.getMessage());
+//			RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
+//			
+//			rd.forward(request, response);
 		}
 			
 	}

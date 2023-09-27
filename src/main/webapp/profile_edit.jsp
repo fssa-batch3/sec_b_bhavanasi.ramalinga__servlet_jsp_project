@@ -103,7 +103,7 @@ margin-top:100px;
     
     <input type="hidden" name="id" value="<%=user.getId() %>">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required value="<%= user.getName() %>">
+    <input type="text" id="name" name="name" value="<%= user.getName() %>">
     <label for="email">Email:</label>
     <input type="text" id="email" name="email" disabled value="<%= user.getEmail() %>">
     <label for="phoneNumber">Phone number:</label>

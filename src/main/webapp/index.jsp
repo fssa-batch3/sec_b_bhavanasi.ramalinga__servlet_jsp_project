@@ -358,7 +358,7 @@ margin: 0 0 9px 0;
     </header>
     
     <div class="center">
-  <h1>Shop Electronics </h1>
+  <h1>Shop   Electronics </h1>
 
   </div> 
   

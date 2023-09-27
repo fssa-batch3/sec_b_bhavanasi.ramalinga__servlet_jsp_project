@@ -1,6 +1,8 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +28,7 @@ public class UpdateUser extends HttpServlet {
 		
              UserEntity user = new UserEntity();
              int userId = (Integer) request.getSession().getAttribute("userId");
-             
+             PrintWriter out = response.getWriter();
 		
          try {
         	       User users = UserService.findById(userId);
@@ -97,10 +99,13 @@ public class UpdateUser extends HttpServlet {
 //		response.sendRedirect(request.getContextPath()+"/category_list.jsp");
 		
          } catch (ServiceException | ValidationException e) {
+        	 e.printStackTrace();
+ 			out.println("<script>alert('"+ e.getMessage() +"');</script>");
+ 			out.println("<script>window.history.back();</script>");
 		
-		 String errorMessage = e.getMessage();
-		 request.setAttribute("errorMessage", errorMessage);
-	     request.getRequestDispatcher("/profile_edit.jsp").forward(request, response);
+//		 String errorMessage = e.getMessage();
+//		 request.setAttribute("errorMessage", errorMessage);
+//	     request.getRequestDispatcher("/profile_edit.jsp").forward(request, response);
          }
 		
 	  }

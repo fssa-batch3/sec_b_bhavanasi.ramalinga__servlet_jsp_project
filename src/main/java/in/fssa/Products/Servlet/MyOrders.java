@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -34,12 +35,12 @@ public class MyOrders extends HttpServlet {
 		  Integer userIdObject = (Integer) session.getAttribute("userId");
 		
 		
-		 		try {
+		 try {
 			int userId = userIdObject.intValue();
 			UserEntity user = UserService.findById(userId);
 			System.out.println(userId);
 
-			Set<OrderEntity> order= OrderService.findOrdersByUserId(userId);
+			List<OrderEntity> order= OrderService.findOrdersByUserId(userId);
 			
 			System.out.println(order);
 			 if (order != null) {		

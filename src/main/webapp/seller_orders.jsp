@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="in.fssa.productprice.model.OrderStatus"%>
 <%@page import="in.fssa.productprice.model.OrderEntity"%>
 <%@page import="in.fssa.productprice.model.Order"%>
@@ -79,7 +80,7 @@ margin-top:150px;
 <jsp:include page="seller_header.jsp" /> 
 <%
 
-Set<OrderEntity> order = (Set<OrderEntity>) request.getAttribute("orderList");
+List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
 %>
 
 

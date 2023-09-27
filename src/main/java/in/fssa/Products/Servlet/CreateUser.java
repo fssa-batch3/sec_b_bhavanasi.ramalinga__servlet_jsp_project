@@ -1,6 +1,7 @@
 package in.fssa.Products.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +23,12 @@ import in.fssa.productprice.service.UserService;
 @WebServlet("/user/create")
 public class CreateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
   
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		 PrintWriter out = response.getWriter();
+		  
       UserEntity user = new UserEntity();
       
       try {
@@ -47,6 +49,7 @@ public class CreateUser extends HttpServlet {
   			user.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
   			user.setPincode(Integer.parseInt(request.getParameter("pincode")));
   			user.setAddress(request.getParameter("Address"));
+  			user.setPassword(request.getParameter("password"));
 
   		
   		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
@@ -65,13 +68,19 @@ public class CreateUser extends HttpServlet {
   		
   		  response.sendRedirect(request.getContextPath()+"/user/login");
   		
-  		   } catch (ValidationException | ServiceException e) {
-  			   e.printStackTrace();
-  			  request.setAttribute("errorMessage", e.getMessage());
-  			
-  			   RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
-  			
-  			     rd.forward(request, response);
+  		   } catch (Exception e) {
+  			   
+  			 e.printStackTrace();
+	 		out.println("<script>alert('"+ e.getMessage() +"');</script>");
+	 		out.println("<script>window.history.back();</script>");
+	 			
+	 			
+//  			   e.printStackTrace();
+//  			  request.setAttribute("errorMessage", e.getMessage());
+//  			
+//  			   RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
+//  			
+//  			     rd.forward(request, response);
   		}
   		
 	}
