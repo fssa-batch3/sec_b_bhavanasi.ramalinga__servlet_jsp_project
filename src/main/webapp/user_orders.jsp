@@ -1,3 +1,4 @@
+<%@page import="in.fssa.productprice.model.OrderStatus"%>
 <%@page import="java.util.List"%>
 <%@page import="in.fssa.productprice.model.User"%>
 <%@page import="in.fssa.productprice.model.Order"%>
@@ -46,6 +47,13 @@ justify-content: center;
 margin-bottom:20%;
 }
 
+.cancel {
+    display: block;
+    color: red; 
+    font-size: 16px; 
+    font-weight: bold;
+    font-size:25px; 
+}
 </style>
 <body>
 <header>
@@ -76,17 +84,34 @@ margin-bottom:20%;
          <img src="<%= ps.getImage() %>">
       </div>
       <div class="datadetails">
+       <h2><%= ps.getName()%></h2>
+         <h3>Price: <%= ps.getPrice()%></h3>
+          <h3>Quantity: <%= ps.getQuantity() %></h3>
          <h2><%= ps.getName()%></h2>
-         <h3>Price: <%= ps.getPrice()*ps.getQuantity()%></h3>
-         <h3>Quantity: <%= ps.getQuantity() %></h3>
-         <h3>Status:</h3>
+         <h3>Total Amount : <%= ps.getPrice()*ps.getQuantity()%></h3>
+        
+        
+         
+         
+    <% if (ps.getStatus() == OrderStatus.CANCEL_ORDER) {
+%>
+        <p class="cancel" style="display: block"   >CANCELED  ORDER</p>
+<%
+    } else if (ps.getStatus() == OrderStatus.ON_THE_WAY || ps.getStatus() == OrderStatus.ORDERED_SUCCESSFULLY) { %>
+    	
+    	 <h3>Status:</h3>
          <div class="status">
             <h3> <%= ps.getStatus() %></h3>
          </div>
+        
+	<a href="/productpriceweb/cancel_order?order_id=<%= ps.getOrderId() %>">
+        <button class="canceled" style="display: block">CANCEL ORDER</button> </a>
+<%
+    }
+%>
          
-         <a href="cancel_order?order_id=<%= ps.getOrderId() %>">
-            <button  id="cancelOrderButton"  class="cancel-button"  >Cancel Order </button>
-         </a>
+        
+          
       </div>
    </div>
    <%

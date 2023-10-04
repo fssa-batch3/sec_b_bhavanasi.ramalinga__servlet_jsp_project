@@ -46,9 +46,11 @@
   align-self: center;
 }
 .cards img {
-  max-width: 70%; 
+ margin: 40px;
+ 
+ max-height: 300px;
   height: auto; 
-  width: 1500px; 
+
   height: 400px; 
 }
 

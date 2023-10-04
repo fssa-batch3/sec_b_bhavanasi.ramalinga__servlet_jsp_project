@@ -55,6 +55,8 @@ margin-top:100px;
 }
 .description h4, p{
 margin-left:50px;
+display: flex;
+justify-content: center;
 }
 
 /* Style form labels */

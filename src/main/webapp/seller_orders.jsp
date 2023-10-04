@@ -73,16 +73,27 @@ margin-top: 140px;
 footer{
 margin-top:150px;
 }
+.details{
+display: flex;
+justify-content: space-around;
+
+}
+button{
+color: white;
+ background-color:#002266;
+ 
+}
+.status{
+display: flex;
+justify-content: space-around;
+}
 
 </style>
 <body>
-
-<jsp:include page="seller_header.jsp" /> 
+<jsp:include page="seller_header.jsp" />
 <%
-
 List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
 %>
-
 
 <table>
     <thead>
@@ -93,42 +104,68 @@ List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
             <th>Username</th>
             <th>Phone Number</th>
             <th>Address</th>
-            <th>Responce</th>
+            <th>Response</th>
         </tr>
     </thead>
     <% if (order.isEmpty()) { %>
-    <tr>
-        <td colspan="6"><h2>No Orders Booked by Users .</h2></td>
-    </tr>
+        <tr>
+            <td colspan="7"><h2>No Orders Booked by Users.</h2></td>
+        </tr>
     <% } else { %>
-    <% for (OrderEntity pr : order) { %>
-    <tr>
-        <td>
-          <img class="product-image" src="<%= pr.getImage() %>" alt="">
-        </td>
-        <td><%= pr.getName() %></td>
-        <td>$<%= pr.getPrice() %></td>
-        <td><%= pr.getUserName() %></td>
-        <td><%= pr.getPhoneNumber() %></td>
-        <td><%=pr.getAddress() %></td>
-         <td>
-             <a href="accept_order?order_id=<%= pr.getOrderId() %>">
-                <button class="accept-button">On the way</button>
-            </a>
-            
-            <a href="order_delivered?order_id=<%= pr.getOrderId()%>">
-             <button class="deliverd-button">Order Delivered</button>
-            </a>
-        </td>
-    </tr>
-    <% } %>
+        <tbody>
+            <% for (OrderEntity pr : order) { %>
+                <tr>
+                    <td>
+                        <img class="product-image" src="<%= pr.getImage() %>" alt="">
+                    </td>
+                    <td><%= pr.getName() %></td>
+                    <td>Rs.<%= pr.getPrice() %></td>
+                    <td><%= pr.getUserName() %></td>
+                    <td><%= pr.getPhoneNumber() %></td>
+                    <td><%= pr.getAddress() %></td>
+                   <td>
+   <% if (pr.getStatus() == OrderStatus.ORDERED_SUCCESSFULLY) { %>
+   <div class="status">
+    <a href="accept_order?order_id=<%=pr.getOrderId()%>">
+        <button class="ontheway" style="display: block">On the Way</button>
+    </a>
+    <a href="cancel_order?order_id=<%= pr.getOrderId() %>">
+        <button class="cancel" style="display: block">DELIVERED</button>
+    </a>
+    </div>
+      <% } else if (pr.getStatus() == OrderStatus.DELIVERED) { %>
+      <a href="/productpriceweb/order_delivered?order_id=<%= pr.getOrderId() %>">
+        <button class="delivered" style="display: block">Delivered</button>
+      </a>
+      <a href="accept_order?order_id=<%=pr.getOrderId()%>">
+        <button class="ontheway" style="display: none">On the Way</button>
+    </a>
+    <% } else if (pr.getStatus() == OrderStatus.ON_THE_WAY) { %>
+    <a href="accept_order?order_id=<%=pr.getOrderId()%>">
+        <button class="ontheway" style="display: none">On the Way</button>
+    </a>
+    <a href="/productpriceweb/order_delivered?order_id=<%= pr.getOrderId() %>">
+        <button class="delivered" style="display: block">Delivered</button>
+        
+<% } else if (pr.getStatus() == OrderStatus.CANCEL_ORDER) { %>
+    <a href="cancel_order?order_id=<%=pr.getOrderId()%>">
+        <button class="ontheway" style="display: none">CANCELED ORDER </button>
+    </a>
+<% } %>
+</td>
+
+
+
+
+                </tr>
+            <% } %>
+        </tbody>
     <% } %>
 </table>
+
 <footer>
-<jsp:include page="footer.jsp" /> 
+  <jsp:include page="footer.jsp" />
 </footer>
-
-
 
 </body>
 </html>
