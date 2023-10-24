@@ -130,10 +130,11 @@ margin-bottom:20px;
 }
 
 .no-products{
-margin-left:200px;
+margin-left:350px;
+margin-bottom:50px;
 }
 .no-products h2{
-  margin:150px;
+  margin:205px;
 }
 
 
@@ -174,7 +175,7 @@ margin-left:200px;
     } else {
     %>
     <div class="no-products">
-        <h2>No products added by seller.</h2>
+        <h2>Products are not available now.</h2>
     </div>
     <%
     }

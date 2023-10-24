@@ -12,10 +12,12 @@
 	
     <style>
         /* Global styles */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color:#ddd;
         }
 
         /* Container for form */
@@ -27,7 +29,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin-top:40px;
+            margin-top:250px;
         }
 
         /* Form styles */
@@ -110,15 +112,32 @@
             display:flex;
             justify-content:space-evenly;
         }
+        .last{
+        display:flex;
+        justify-content:space-around;
+        }
+        .btns {
+        color:white;
+         background-color: #002266;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: block;
+            
+        }
+        .btns a{
+        color:white;
+        text-decoration:none;
+        
+        }
     </style>
 </head>
 <body>
- <header>
-        <div class="containers">
-            <a href="User/Login">Sign In</a>
-            <a href="User/New">Register</a>
-        </div>
-    </header>
+
     
     		<%
        String error = (String) request.getAttribute("errorMessage");
@@ -149,9 +168,12 @@
 
            
 
-            <div>
+            <div class="last">
                 <a href="List/Category"><button class="btn" type="submit">Submit</button></a>
-            </div>
+          
+           <button class="btns" type="button"><a href="new">Register</button></a>
+
+              </div>
         </form>
     </section>
 </body>

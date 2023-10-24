@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>Product List </title>
 <style>
@@ -104,9 +105,11 @@ margin-bottom:170px;
             <h2><%= pr.getName() %></h2>
             <h3> Rs.<%= pr.getPrice() %></h3>
             <p><%= pr.getDetails() %></p>
+            <hr>
             <div class="action-buttons">
-                <a href="product/edit?id=<%= pr.getId() %>" class="action-button">Edit</a>
-                <a href="product/delete?id=<%= pr.getId() %>" class="action-button">Delete</a>
+               <a href="product/edit?id=<%= pr.getId() %>" class="btn btn-primary">Edit</a>
+      <a href="product/delete?id=<%= pr.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+
             </div>
         </div>
     <% } %>

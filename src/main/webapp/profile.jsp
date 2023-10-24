@@ -21,13 +21,12 @@ body, html, h1, h2, h3, p, ul, li {
 
 /* Apply a background color to the body */
 body {
-    background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
 
 /* Center the form on the page */
 form {
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;

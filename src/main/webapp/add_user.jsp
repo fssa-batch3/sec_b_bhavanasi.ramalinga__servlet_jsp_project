@@ -11,6 +11,9 @@
 	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
  <style>
 /* Apply basic styling to the form container */
+body{
+background-color:#ddd;
+}
 .register {
     max-width: 400px;
     margin: 0 auto;
@@ -117,6 +120,7 @@ p a {
     <form role="form" action="new" method="POST" >
 		
         <div class="register">
+       
             <h2> SIGN UP : </h2>
             <div>
                 <label> Name: </label>

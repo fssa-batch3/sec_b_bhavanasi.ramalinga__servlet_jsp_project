@@ -54,6 +54,11 @@ margin-bottom:20%;
     font-weight: bold;
     font-size:25px; 
 }
+.canceled{
+display: block;
+ color: white;
+ background: #002266;
+}
 </style>
 <body>
 <header>
@@ -87,7 +92,6 @@ margin-bottom:20%;
        <h2><%= ps.getName()%></h2>
          <h3>Price: <%= ps.getPrice()%></h3>
           <h3>Quantity: <%= ps.getQuantity() %></h3>
-         <h2><%= ps.getName()%></h2>
          <h3>Total Amount : <%= ps.getPrice()*ps.getQuantity()%></h3>
         
         
@@ -103,9 +107,10 @@ margin-bottom:20%;
          <div class="status">
             <h3> <%= ps.getStatus() %></h3>
          </div>
-        
-	<a href="/productpriceweb/cancel_order?order_id=<%= ps.getOrderId() %>">
-        <button class="canceled" style="display: block">CANCEL ORDER</button> </a>
+   <a href="/productpriceweb/cancel_order?order_id=<%= ps.getOrderId() %>" onclick="return confirm('Are you sure you want to cancel this order?')">
+    <button class="canceled" style="display: block">CANCEL ORDER</button>
+</a>
+
 <%
     }
 %>

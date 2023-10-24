@@ -87,7 +87,10 @@ color: white;
 display: flex;
 justify-content: space-around;
 }
-
+.message h2{
+margin-top: 20%;
+margin-bottom: 16%;
+}
 </style>
 <body>
 <jsp:include page="seller_header.jsp" />
@@ -95,23 +98,23 @@ justify-content: space-around;
 List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
 %>
 
-<table>
-    <thead>
-        <tr>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Username</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>Response</th>
-        </tr>
-    </thead>
-    <% if (order.isEmpty()) { %>
-        <tr>
-            <td colspan="7"><h2>No Orders Booked by Users.</h2></td>
-        </tr>
-    <% } else { %>
+<% if (order.isEmpty()) { %>
+<div class = "message">
+    <h2>No Orders Booked by Users.</h2>
+    </div>
+<% } else { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Username</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Response</th>
+            </tr>
+        </thead>
         <tbody>
             <% for (OrderEntity pr : order) { %>
                 <tr>
@@ -123,45 +126,41 @@ List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
                     <td><%= pr.getUserName() %></td>
                     <td><%= pr.getPhoneNumber() %></td>
                     <td><%= pr.getAddress() %></td>
-                   <td>
-   <% if (pr.getStatus() == OrderStatus.ORDERED_SUCCESSFULLY) { %>
-   <div class="status">
-    <a href="accept_order?order_id=<%=pr.getOrderId()%>">
-        <button class="ontheway" style="display: block">On the Way</button>
-    </a>
-    <a href="cancel_order?order_id=<%= pr.getOrderId() %>">
-        <button class="cancel" style="display: block">DELIVERED</button>
-    </a>
-    </div>
-      <% } else if (pr.getStatus() == OrderStatus.DELIVERED) { %>
-      <a href="/productpriceweb/order_delivered?order_id=<%= pr.getOrderId() %>">
-        <button class="delivered" style="display: block">Delivered</button>
-      </a>
-      <a href="accept_order?order_id=<%=pr.getOrderId()%>">
-        <button class="ontheway" style="display: none">On the Way</button>
-    </a>
-    <% } else if (pr.getStatus() == OrderStatus.ON_THE_WAY) { %>
-    <a href="accept_order?order_id=<%=pr.getOrderId()%>">
-        <button class="ontheway" style="display: none">On the Way</button>
-    </a>
-    <a href="/productpriceweb/order_delivered?order_id=<%= pr.getOrderId() %>">
-        <button class="delivered" style="display: block">Delivered</button>
-        
-<% } else if (pr.getStatus() == OrderStatus.CANCEL_ORDER) { %>
-    <a href="cancel_order?order_id=<%=pr.getOrderId()%>">
-        <button class="ontheway" style="display: none">CANCELED ORDER </button>
-    </a>
-<% } %>
-</td>
-
-
-
-
+                    <td>
+                        <% if (pr.getStatus() == OrderStatus.ORDERED_SUCCESSFULLY) { %>
+                            <div class="status">
+                                <a href="accept_order?order_id=<%=pr.getOrderId()%>">
+                                    <button class="ontheway" style="display: block">On the Way</button>
+                                </a>
+                                <a href="cancel_order?order_id=<%= pr.getOrderId() %>">
+                                    <button class="cancel" style="display: block">DELIVERED</button>
+                                </a>
+                            </div>
+                        <% } else if (pr.getStatus() == OrderStatus.DELIVERED) { %>
+                            <a href="/productpriceweb/order_delivered?order_id=<%= pr.getOrderId() %>">
+                                <button class="delivered" style="display: block">Delivered</button>
+                            </a>
+                            <a href="accept_order?order_id=<%=pr.getOrderId()%>">
+                                <button class="ontheway" style="display: none">On the Way</button>
+                            </a>
+                        <% } else if (pr.getStatus() == OrderStatus.ON_THE_WAY) { %>
+                            <a href="accept_order?order_id=<%=pr.getOrderId()%>">
+                                <button class="ontheway" style="display: none">On the Way</button>
+                            </a>
+                            <a href="/productpriceweb/order_delivered?order_id=<%= pr.getOrderId() %>">
+                                <button class="delivered" style="display: block">Delivered</button>
+                            <% } else if (pr.getStatus() == OrderStatus.CANCEL_ORDER) { %>
+                            <a href="cancel_order?order_id=<%=pr.getOrderId()%>">
+                                <button class="ontheway" style="display: none">CANCELED ORDER</button>
+                            </a>
+                        <% } %>
+                    </td>
                 </tr>
             <% } %>
         </tbody>
-    <% } %>
-</table>
+    </table>
+<% } %>
+
 
 <footer>
   <jsp:include page="footer.jsp" />

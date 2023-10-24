@@ -9,140 +9,138 @@
 <title>Insert title here</title>
 </head>
 <style>
-.cards{
-display:flex;
-margin-top:100px;
-
-
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
- .cards {
-    display: flex;
-    padding: 10px;
-    margin:300px;
-    border:1px solid;
-  }
 
-  .product {
-   
-    padding: 10px;
-    border-right: 1px solid #ccc;
-  }
-  .description h2 , #text{
-  margin-left:70px;
-  }
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  border:1px solid;
+  
+}
 
-  .userdetails {
-    flex: 1;
-    padding: 10px;
-  }
-  /* Style the form container */
-.userdetails {
-  max-width: 400px;
-  margin: 0 auto;
+.product {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   padding: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-    width:150%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin:20px;
+  max-width:50%;
 }
 
-
-/* Style the form heading */
-.userdetails h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-.description h4, p{
-margin-left:50px;
-display: flex;
-justify-content: center;
+.productImage img {
+ 
+  height: 30vh;
+  width: 35vh;
+ 
+ 
 }
 
-/* Style form labels */
-.userdetails label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-/* Style form input fields and textarea */
-.userdetails input[type="text"],
-.userdetails input[type="number"],
-.userdetails textarea {
-  width: 90%;
+.data {
   padding: 10px;
-  margin-bottom: 10px;
+}
+
+h4 {
+  margin: 0;
+  color: #333;
+}
+
+.description p {
+  color: #555;
+}
+
+/* User Details Form */
+.userdetails {
+  margin-top: 20px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+}
+
+label {
+  color: #333;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
 }
 
-/* Style the submit button (if you have one) */
-.userdetails input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
+.quantity {
+  display: flex;
+  align-items: center;
 }
 
-/* Style the submit button on hover */
-.userdetails input[type="submit"]:hover {
-  background-color: #45a049;
+input[type="number"] {
+  flex: 1;
 }
 
-
-
-/* Style any error messages (if you have any) */
-.error-message {
-  color: red;
-  font-size: 14px;
-}
-.data{
-display:flex;
-width:450px;
-flex-direction:column;
-align-items: center;
+/* Hidden Fields */
+input[type="hidden"] {
+  display: none;
 }
 
 button[type="submit"] {
-        background-color: #007bff; 
-        color: #fff; 
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease; 
-    }
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
-    button[type="submit"]:hover {
-        background-color: #0056b3; 
-    }
-    .name{
-    display:flex;
-    }
-    .productImage img{
-   vertical-align: middle;
-    border-style: none;
-    margin: 40px;
-    width: 50%;
-    max-height: 300px;
-    }
-  .productImage{
-  display:flex;
-  justify-content:center;
-  }
-</style>
+/* Error Message */
+ p {
+ 
+  text-align: center;
+  margin: 10px;
+}
+.name{
+display:flex;
+}
+.names{
+display:flex;
 
-<body>
+
+}
+form{
+padding:20px;
+}
+.names p{
+margin-botton:50px;
+}
+.name h4{
+margin-left:8px;
+}
+
+ <body>
 <header>
 <jsp:include page="user_header.jsp" />
 </header>
 
 
-<% User user = (User) request.getAttribute("userDetails"); 
+   <% User user = (User) request.getAttribute("userDetails"); 
 
 	Product pdt = (Product) request.getAttribute("productDetails");
 
@@ -160,10 +158,10 @@ button[type="submit"] {
                  <h4><%= pdt.getName()%></h4>
                  </div>
                  <div class="name">
-                
+                   <h4>Price:</style>
                   <h4>Rs: <%= pdt.getPrice() %></h4>
                   </div>
-                     <div class="description">
+                     <div class="names">
                   <h4>Description:</h4>
                 <p><%=pdt.getDetails() %></p>
                      

@@ -13,7 +13,6 @@
 <style>
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
   margin: 0;
   padding: 20px;
 }
@@ -105,7 +104,14 @@ nav a:hover {
             display:flex;
             justify-content:space-evenly;
         }
-
+.names h2{
+display:flex;
+ margin-bottom:20px;
+}
+div#logo h3 {
+    margin-top: 40px;
+    color: white;
+    font-size: 25px;
 
 </style>
 </head>
@@ -117,18 +123,20 @@ nav a:hover {
     <jsp:include page="seller_header.jsp" />
 
      <form action="products/create" method="POST">
-     <label for="name">productName</label>
+     <div class="names"><h2>Add Product</h2></div>
+    
+     <label for="name">1.productName</label>
      <input type="text"  name="name" required><br><br>
         
-        <label for="price">productPrice</label>
+        <label for="price">2.productPrice</label>
         <input type="text"  name="price" required><br><br>
-        <label for="image_url">Image </label>
+        <label for="image_url">3.Image </label>
         <input type="text" name="image_url" required><br><br>
         
-        <label for="Details">Details</label>
+        <label for="Details">4.Details</label>
       <textarea name="Details" required></textarea><br><br>
 
-      <label for="category">Category:</label>
+      <label for="category">5.Category:</label>
       <select id="category" name="category" required>
       
       <option value="9">Computer parts</option>
